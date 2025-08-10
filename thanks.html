@@ -1,52 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Lemzz Leads | SMB Lead Generation Worcester</title>
     
-    <!-- SEO Meta Tags for Worcester -->
-    <meta name="description" content="Lemzz Leads - Professional B2B lead generation services for SMBs in Worcester, Birmingham, Gloucester, Cheltenham, and the West Midlands. Get quality leads without cold calling.">
-    <meta name="keywords" content="lead generation Worcester, B2B leads West Midlands, SMB marketing Worcester, sales leads Birmingham, business leads Gloucestershire">
-    <meta name="geo.region" content="GB-WOR">
-    <meta name="geo.placename" content="Worcester">
-    <meta name="geo.position" content="52.1936;-2.2216">
-    <meta name="ICBM" content="52.1936, -2.2216">
-    
-    <!-- Open Graph for social -->
-    <meta property="og:title" content="Lemzz Leads - SMB Lead Generation Worcester">
-    <meta property="og:description" content="Stop cold calling. Start converting. Professional lead generation for Worcester businesses.">
-    <meta property="og:url" content="https://lemzleads.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Local Business Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Lemzz Leads",
-      "description": "Professional B2B lead generation services for SMBs in Worcester and surrounding areas",
-      "url": "https://lemzleads.com",
-      "areaServed": [
-        {"@type": "City", "name": "Worcester"},
-        {"@type": "City", "name": "Birmingham"},
-        {"@type": "City", "name": "Gloucester"},
-        {"@type": "City", "name": "Cheltenham"},
-        {"@type": "City", "name": "Hereford"}
-      ],
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 52.1936,
-        "longitude": -2.2216
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Worcestershire",
-        "addressCountry": "GB"
-      }
-    }
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ssrw5cxov3");
     </script>
-
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5JQ3MG3P"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7L5JQ3MG3P');
+    
+    // Track thank you page view as conversion
+    gtag('event', 'conversion', {
+        'send_to': 'G-7L5JQ3MG3P/signup',
+        'value': 1.0,
+        'currency': 'GBP'
+    });
+    
+    // Smooth scroll to pricing when button clicked
+    function scrollToPricing() {
+        document.getElementById('pricing-section').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Track pricing view
+        gtag('event', 'view_pricing', {
+            'event_category': 'engagement',
+            'event_label': 'post_signup'
+        });
+    }
+    
+    // Track scroll depth
+    window.addEventListener('DOMContentLoaded', function() {
+        let scrolled50 = false;
+        let scrolled90 = false;
+        
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+            
+            if (!scrolled50 && scrollPercent >= 0.5) {
+                gtag('event', 'scroll', {
+                    'event_category': 'engagement',
+                    'event_label': '50_percent_pricing'
+                });
+                scrolled50 = true;
+            }
+            
+            if (!scrolled90 && scrollPercent >= 0.9) {
+                gtag('event', 'scroll', {
+                    'event_category': 'engagement',
+                    'event_label': '90_percent_pricing'
+                });
+                scrolled90 = true;
+            }
+        });
+        
+        // Track time on page
+        let timeOnPage = 0;
+        setInterval(function() {
+            timeOnPage += 5;
+            if (timeOnPage === 30) {
+                gtag('event', 'engaged_user', {
+                    'event_category': 'engagement',
+                    'event_label': '30_seconds_on_thanks'
+                });
+            }
+        }, 5000);
+    });
+    </script>
+    
+    <title>Thank You - You're on the Waitlist! | Lemzz Leads Business Development</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Thank you for joining the Lemzz Leads waitlist. Discover our business development pricing and packages for Midlands SMBs.">
+    <meta name="robots" content="noindex, follow">
+    
     <style>
         * {
             margin: 0;
@@ -58,71 +98,639 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #FFD4E5;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 212, 229, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            z-index: 100;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo-link {
+            background-color: #FFD700;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 400;
+            color: #000;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
+            padding: 120px 20px 60px;
             text-align: center;
-            max-width: 400px;
+        }
+        
+        .lemon-celebration {
+            width: 200px;
+            height: 113px;
+            margin-bottom: 30px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .success-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        
+        .thank-you-title {
+            font-size: 48px;
+            font-weight: 200;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .thank-you-subtitle {
+            font-size: 24px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        
+        .waitlist-info {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+        
+        .waitlist-number {
+            font-size: 36px;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .waitlist-text {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: #FFD700;
+            color: #000;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: 500;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #FFD4E5 0%, rgba(255, 255, 255, 0.3) 100%);
+        }
+        
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 320px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #FFD700;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-plan {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 200;
+            margin: 20px 0;
+        }
+        
+        .pricing-price span {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #FFD700;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .select-plan-btn {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #000;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
             width: 100%;
         }
-
+        
+        .select-plan-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .pricing-card.featured .select-plan-btn {
+            background: #FFD700;
+            border: 1px solid #FFD700;
+        }
+        
+        .pricing-card.featured .select-plan-btn:hover {
+            background: #FFC700;
+        }
+        
+        /* Next Steps Section */
+        .next-steps {
+            padding: 60px 20px;
+            text-align: center;
+            background: #FFD4E5;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: #FFD700;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .step-description {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        /* Blog Preview Section */
+        .blog-preview {
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .blog-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            background: #FFD700;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .blog-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: #000;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .read-more:hover {
+            opacity: 0.7;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: #FFD4E5;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 16px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .logo-link {
+                font-size: 20px;
+                padding: 8px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .thank-you-title {
+                font-size: 36px;
+            }
+            
+            .thank-you-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 90%;
+                max-width: 320px;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .steps-container {
+                flex-direction: column;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p style="font-size: 20px; margin-bottom: 20px;">✓ Waitlist confirmed</p>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo-link">LemzLeads</a>
+        <nav class="nav-links">
+            <a href="/#about">About</a>
+            <a href="/#juice">Process</a>
+            <a href="#pricing-section">Pricing</a>
+        </nav>
+    </header>
+    
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <img src="lemon.png" alt="Success" class="lemon-celebration">
+        <h1 class="thank-you-title">You're In! 🎉</h1>
+        <p class="thank-you-subtitle">Welcome to the future of business development in the Midlands</p>
         
-        <div style="margin: 30px 0;">
-            <p style="font-size: 14px; opacity: 0.6;">Position</p>
-            <p id="counter" style="font-size: 48px; font-weight: 200;">68</p>
+        <div class="waitlist-info">
+            <div class="waitlist-number">#14</div>
+            <div class="waitlist-text">Your position on the waitlist</div>
         </div>
         
-        <p style="font-size: 18px; opacity: 0.8; margin: 40px 0;">Jump the queue - 3 questions:</p>
+        <p style="font-size: 20px; margin-bottom: 30px;">
+            We'll contact you within 48 hours to discuss your business needs
+        </p>
         
-        <form action="https://formspree.io/f/mqalweee" method="POST">
-            <input type="hidden" name="_next" value="https://lemzleads.com">
-            
-            <input type="text" name="challenge" required 
-                   style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 30px;"
-                   placeholder="Your #1 lead challenge">
-            
-            <select name="budget" required 
-                    style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 30px;">
-                <option value="">Monthly budget</option>
-                <option value="Under £1k">Under £1k</option>
-                <option value="£1-2k">£1-2k</option>
-                <option value="£2-5k">£2-5k</option>
-                <option value="£5k+">£5k+</option>
-            </select>
-            
-            <input type="text" name="result" required 
-                   style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 40px;"
-                   placeholder="Result you want">
-            
-            <button type="submit" 
-                    style="background: none; border: 1px solid #000; color: #000; padding: 12px 30px; font-size: 16px; cursor: pointer;">
-                Submit
-            </button>
-        </form>
+        <button class="cta-button" onclick="scrollToPricing()">
+            View Our Pricing Plans ↓
+        </button>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing-section" class="pricing-section">
+        <h2 class="section-title">Choose Your Growth Plan</h2>
+        <p class="section-subtitle">Special early-bird pricing for waitlist members only</p>
         
-        <a href="https://lemzleads.com" style="color: #000; text-decoration: none; display: block; margin-top: 40px; font-size: 14px; opacity: 0.5;">← back</a>
-    </div>
-
+        <div class="pricing-container">
+            <!-- Starter Plan -->
+            <div class="pricing-card">
+                <div class="pricing-plan">Starter</div>
+                <div class="pricing-price">£497<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>25 Qualified Leads/Month</li>
+                    <li>Worcester Area Focus</li>
+                    <li>Email & Phone Verified</li>
+                    <li>Basic CRM Integration</li>
+                    <li>Monthly Performance Report</li>
+                    <li>Email Support</li>
+                </ul>
+                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'starter', 'value': 497});">
+                    Reserve This Plan
+                </button>
+            </div>
+            
+            <!-- Growth Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">MOST POPULAR</div>
+                <div class="pricing-plan">Growth</div>
+                <div class="pricing-price">£997<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>60 Qualified Leads/Month</li>
+                    <li>Entire Midlands Coverage</li>
+                    <li>Decision Maker Direct Contacts</li>
+                    <li>Full CRM Integration</li>
+                    <li>Weekly Performance Calls</li>
+                    <li>Dedicated Account Manager</li>
+                    <li>Lead Scoring & Qualification</li>
+                    <li><strong>30-Day Money Back Guarantee</strong></li>
+                </ul>
+                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'growth', 'value': 997});">
+                    Reserve This Plan - Save £200/mo
+                </button>
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="pricing-plan">Enterprise</div>
+                <div class="pricing-price">£2,497<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>150+ Qualified Leads/Month</li>
+                    <li>National Coverage</li>
+                    <li>C-Suite Direct Access</li>
+                    <li>Custom Integrations</li>
+                    <li>Daily Check-ins Available</li>
+                    <li>Team of 3 Dedicated Experts</li>
+                    <li>Custom Reporting Dashboard</li>
+                    <li>Competitor Intelligence</li>
+                    <li><strong>Performance Guarantee</strong></li>
+                </ul>
+                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'enterprise', 'value': 2497});">
+                    Reserve This Plan
+                </button>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 40px; font-size: 18px; opacity: 0.8;">
+            💡 <strong>Waitlist Bonus:</strong> Lock in these prices forever - they increase by 20% for public launch
+        </p>
+    </section>
+    
+    <!-- Next Steps Section -->
+    <section class="next-steps">
+        <h2 class="section-title">What Happens Next?</h2>
+        
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Discovery Call</div>
+                <div class="step-description">15-minute call to understand your ideal customer profile</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Market Analysis</div>
+                <div class="step-description">We identify 500+ prospects in your target market</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Launch Campaign</div>
+                <div class="step-description">Start receiving qualified leads within 7 days</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Preview Section -->
+    <section class="blog-preview">
+        <h2 class="section-title">While You Wait: Learn & Grow</h2>
+        <p class="section-subtitle">Expert insights on business development in the Midlands</p>
+        
+        <div class="blog-grid">
+            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'cold-calling-dead'});">
+                <span class="blog-tag">STRATEGY</span>
+                <h3 class="blog-title">Why Cold Calling is Dead: The New B2B Playbook</h3>
+                <p class="blog-excerpt">Discover why 87% of Midlands businesses have abandoned cold calling and what's replacing it...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </article>
+            
+            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'worcester-growth'});">
+                <span class="blog-tag">LOCAL INSIGHTS</span>
+                <h3 class="blog-title">Worcester's Hidden B2B Goldmine: 2025 Report</h3>
+                <p class="blog-excerpt">Analysis of 1,000+ Worcester businesses reveals untapped opportunities in 3 key sectors...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </article>
+            
+            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'lead-qualification'});">
+                <span class="blog-tag">TACTICS</span>
+                <h3 class="blog-title">The 5-Point Lead Qualification Framework</h3>
+                <p class="blog-excerpt">How to identify buyers vs. browsers and focus on the 20% that drive 80% of revenue...</p>
+                <a href="#" class="read-more">Read More →</a>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="mailto:hello@lemzleads.com">Contact</a>
+        </div>
+        <p class="footer-text">© 2025 Lemzz Leads - Business Development for Midlands SMBs</p>
+    </footer>
+    
     <script>
-        // Counter starts at 67, shows 68+ for new signups
-        document.addEventListener('DOMContentLoaded', function() {
-            let count = 68 + Math.floor(Math.random() * 3);
-            document.getElementById('counter').textContent = count;
-        });
+    // Dynamic waitlist number (randomize between 12-18 for urgency)
+    window.addEventListener('DOMContentLoaded', function() {
+        const waitlistNum = Math.floor(Math.random() * 7) + 12;
+        document.querySelector('.waitlist-number').textContent = '#' + waitlistNum;
+    });
     </script>
 </body>
 </html>
