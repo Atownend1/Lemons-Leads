@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Lemzz Leads | SMB Lead Generation Worcester</title>
+    <title>Lemzz Leads - B2B Lead Generation Worcester | SMB Sales Leads West Midlands</title>
     
-    <!-- SEO Meta Tags for Worcester -->
-    <meta name="description" content="Lemzz Leads - Professional B2B lead generation services for SMBs in Worcester, Birmingham, Gloucester, Cheltenham, and the West Midlands. Get quality leads without cold calling.">
-    <meta name="keywords" content="lead generation Worcester, B2B leads West Midlands, SMB marketing Worcester, sales leads Birmingham, business leads Gloucestershire">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional B2B lead generation for SMBs in Worcester, Birmingham, and West Midlands. Stop cold calling, start converting. Quality leads within 50 miles of Worcester.">
+    <meta name="keywords" content="lead generation Worcester, B2B leads Birmingham, SMB marketing West Midlands, sales leads Worcestershire, business development Worcester, lead generation services Gloucester">
+    <meta name="robots" content="index, follow">
     <meta name="geo.region" content="GB-WOR">
     <meta name="geo.placename" content="Worcester">
     <meta name="geo.position" content="52.1936;-2.2216">
-    <meta name="ICBM" content="52.1936, -2.2216">
     <meta name="google-site-verification" content="GYnM6vgrnk-1RMtsiBZrVvrU0Q4SjNaGSF_H77HPMCM">
     
-    <!-- Open Graph for social -->
-    <meta property="og:title" content="Lemzz Leads - SMB Lead Generation Worcester">
-    <meta property="og:description" content="Stop cold calling. Start converting. Professional lead generation for Worcester businesses.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Lemzz Leads - Professional B2B Lead Generation Worcester">
+    <meta property="og:description" content="Transform your SMB with quality leads. No more cold calling. Serving Worcester and 50-mile radius.">
     <meta property="og:url" content="https://www.lemzleads.com">
-    <meta property="og:type" content="website">
     
     <!-- Local Business Schema -->
     <script type="application/ld+json">
@@ -26,28 +25,20 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Lemzz Leads",
-      "description": "Professional B2B lead generation services for SMBs in Worcester and surrounding areas",
       "url": "https://www.lemzleads.com",
-      "areaServed": [
-        {"@type": "City", "name": "Worcester"},
-        {"@type": "City", "name": "Birmingham"},
-        {"@type": "City", "name": "Gloucester"},
-        {"@type": "City", "name": "Cheltenham"},
-        {"@type": "City", "name": "Hereford"}
-      ],
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 52.1936,
-        "longitude": -2.2216
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Worcestershire",
-        "addressCountry": "GB"
+      "description": "B2B lead generation services for SMBs in Worcester and surrounding areas",
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 52.1936,
+          "longitude": -2.2216
+        },
+        "geoRadius": "50 miles"
       }
     }
     </script>
-
+    
     <style>
         * {
             margin: 0;
@@ -59,49 +50,174 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #FFD4E5;
             min-height: 100vh;
-            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Corner Navigation */
+        .corner-nav {
+            position: fixed;
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .corner-nav:hover {
+            transform: scale(1.1);
+        }
+
+        /* Top Left - Logo */
+        .top-left {
+            top: 40px;
+            left: 40px;
+        }
+
+        .logo {
+            background-color: #FFD700;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 32px;
+            font-weight: 400;
+            color: #000;
+        }
+
+        /* Top Right - About Us */
+        .top-right {
+            top: 40px;
+            right: 40px;
+            font-size: 32px;
+            color: #000;
+        }
+
+        /* Bottom Left - The Juice */
+        .bottom-left {
+            bottom: 40px;
+            left: 40px;
+            font-size: 32px;
+            color: #000;
+        }
+
+        /* Bottom Right - Contact Us */
+        .bottom-right {
+            bottom: 40px;
+            right: 40px;
+            font-size: 32px;
+            color: #000;
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            background-color: #FFD4E5;
             padding: 20px;
         }
 
-        .container {
+        .page.active {
+            display: flex;
+        }
+
+        /* Smaller Lemon Container */
+        .lemon-container {
+            position: relative;
+            width: 300px;
+            height: 169px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .lemon-image {
+            width: 300px;
+            height: 169px;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+            opacity: 0.8;
+        }
+
+        /* Always Visible Text - Spread Wide */
+        .page-text {
             text-align: center;
-            max-width: 400px;
-            width: 100%;
+            width: 90vw;
+            max-width: 1000px;
+            font-size: 28px;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 40px;
+        }
+
+        /* Home page text */
+        .coming-soon {
+            font-size: 48px;
+            font-weight: 200;
+            opacity: 0.8;
+            letter-spacing: 3px;
+        }
+
+        /* Process text for The Juice - NO BULLETS */
+        .process-container {
+            width: 80vw;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .process-number {
+            display: block;
+            font-size: 36px;
+            font-weight: 200;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
+        /* Form Container */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Ultra Glass Input Style */
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 15px 0;
+        input[type="email"] {
+            width: 300px;
+            padding: 15px;
             font-size: 16px;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
             outline: none;
-            margin-bottom: 30px;
             transition: all 0.3s;
         }
 
-        input[type="text"]:focus,
-        select:focus {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+        input[type="email"]:focus {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        input[type="text"]::placeholder {
+        input[type="email"]::placeholder {
             color: rgba(0, 0, 0, 0.5);
-        }
-
-        select {
-            cursor: pointer;
-            color: rgba(0, 0, 0, 0.8);
-        }
-
-        select option {
-            background: #FFD4E5;
-            color: #000;
         }
 
         /* Ultra Glass Button Style */
@@ -125,53 +241,151 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
+            .corner-nav {
+                font-size: 20px;
+            }
+
+            .top-left, .top-right {
+                top: 20px;
+            }
+
+            .bottom-left, .bottom-right {
+                bottom: 20px;
+            }
+
+            .top-left, .bottom-left {
+                left: 20px;
+            }
+
+            .top-right, .bottom-right {
+                right: 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+                padding: 8px 20px;
+            }
+
+            .lemon-container {
+                width: 200px;
+                height: 113px;
+            }
+            
+            .lemon-image {
+                width: 200px;
+                height: 113px;
+            }
+
+            .page-text {
+                font-size: 20px;
+            }
+
+            .coming-soon {
+                font-size: 32px;
+            }
+
+            .process-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .process-step {
+                font-size: 18px;
+            }
+
+            .process-number {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p style="font-size: 20px; margin-bottom: 20px;">✓ Waitlist confirmed</p>
-        
-        <div style="margin: 30px 0;">
-            <p style="font-size: 14px; opacity: 0.6;">Position</p>
-            <p id="counter" style="font-size: 48px; font-weight: 200;">68</p>
+    <!-- Corner Navigation -->
+    <div class="corner-nav top-left" onclick="showPage('home')">
+        <div class="logo">LemzLeads</div>
+    </div>
+    <div class="corner-nav top-right" onclick="showPage('about')">About Us</div>
+    <div class="corner-nav bottom-left" onclick="showPage('juice')">The Juice</div>
+    <div class="corner-nav bottom-right" onclick="showPage('contact')">Contact Us</div>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
         </div>
-        
-        <p style="font-size: 18px; opacity: 0.8; margin: 40px 0;">Jump the queue - 3 questions:</p>
-        
-        <form action="https://formspree.io/f/mqalweee" method="POST">
-            <input type="hidden" name="_next" value="https://www.lemzleads.com">
-            
-            <input type="text" name="challenge" required 
-                   placeholder="Your #1 lead challenge">
-            
-            <select name="budget" required>
-                <option value="">Monthly budget</option>
-                <option value="Under £1k">Under £1k</option>
-                <option value="£1-2k">£1-2k</option>
-                <option value="£2-5k">£2-5k</option>
-                <option value="£5k+">£5k+</option>
-            </select>
-            
-            <input type="text" name="result" required 
-                   placeholder="Result you want">
-            
-            <button type="submit">Submit</button>
-        </form>
-        
-        <a href="https://www.lemzleads.com" style="color: #000; text-decoration: none; display: block; margin-top: 40px; font-size: 14px; opacity: 0.5;">← back</a>
+        <div class="coming-soon">coming soon.....</div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+        </div>
+        <div class="page-text">
+            The next generation of SMB lead optimisation.<br><br>
+            Because cold calling is dead, and busy weeks shouldn't turn your leads sour.
+        </div>
+        <div class="form-container">
+            <form action="https://formspree.io/f/mqalweee" method="POST">
+                <input type="hidden" name="_next" value="/thanks.html">
+                <input type="email" name="email" placeholder="Your email" required>
+                <button type="submit">Register Interest</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+        </div>
+        <div class="page-text">
+            We are making our pilot companies succesful.<br><br>
+            Sign up to see their 30 day results and join the waitlist.
+        </div>
+        <div class="form-container">
+            <form action="https://formspree.io/f/mqalweee" method="POST">
+                <input type="hidden" name="_next" value="/thanks.html">
+                <input type="email" name="email" placeholder="Your email" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- The Juice Page -->
+    <div id="juice" class="page">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+        </div>
+        <div class="process-container">
+            <div class="process-step">
+                <span class="process-number">1</span>
+                <span>Identify Buying Intent, Competitor Analysis, Research company signals (<30 days), Decision Maker Details</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">2</span>
+                <span>Tier, Score, Qualify, USP Alignment</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">3</span>
+                <span>Create Demand</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">4</span>
+                <span>Create Your Lemonade</span>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Counter starts at 67, shows 68+ for new signups
-        document.addEventListener('DOMContentLoaded', function() {
-            let count = 68 + Math.floor(Math.random() * 3);
-            document.getElementById('counter').textContent = count;
-        });
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
     </script>
 </body>
 </html>
