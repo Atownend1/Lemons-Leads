@@ -3,89 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ssrw5cxov3");
-    </script>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5JQ3MG3P"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7L5JQ3MG3P');
-    
-    // Track thank you page view as conversion
-    gtag('event', 'conversion', {
-        'send_to': 'G-7L5JQ3MG3P/signup',
-        'value': 1.0,
-        'currency': 'GBP'
-    });
-    
-    // Smooth scroll to pricing when button clicked
-    function scrollToPricing() {
-        document.getElementById('pricing-section').scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Track pricing view
-        gtag('event', 'view_pricing', {
-            'event_category': 'engagement',
-            'event_label': 'post_signup'
-        });
-    }
-    
-    // Track scroll depth
-    window.addEventListener('DOMContentLoaded', function() {
-        let scrolled50 = false;
-        let scrolled90 = false;
-        
-        window.addEventListener('scroll', function() {
-            const scrollPercent = (window.innerHeight + window.scrollY) / document.body.offsetHeight;
-            
-            if (!scrolled50 && scrollPercent >= 0.5) {
-                gtag('event', 'scroll', {
-                    'event_category': 'engagement',
-                    'event_label': '50_percent_pricing'
-                });
-                scrolled50 = true;
-            }
-            
-            if (!scrolled90 && scrollPercent >= 0.9) {
-                gtag('event', 'scroll', {
-                    'event_category': 'engagement',
-                    'event_label': '90_percent_pricing'
-                });
-                scrolled90 = true;
-            }
-        });
-        
-        // Track time on page
-        let timeOnPage = 0;
-        setInterval(function() {
-            timeOnPage += 5;
-            if (timeOnPage === 30) {
-                gtag('event', 'engaged_user', {
-                    'event_category': 'engagement',
-                    'event_label': '30_seconds_on_thanks'
-                });
-            }
-        }, 5000);
-    });
-    </script>
-    
-    <title>Thank You - You're on the Waitlist! | Lemzz Leads Business Development</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Thank you for joining the Lemzz Leads waitlist. Discover our business development pricing and packages for Midlands SMBs.">
-    <meta name="robots" content="noindex, follow">
+    <title>Welcome to the waitlist! - Lemzz Leads</title>
     
     <style>
         * {
@@ -93,12 +11,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #FFD4E5;
             min-height: 100vh;
-            overflow-x: hidden;
+            position: relative;
         }
         
         /* Header */
@@ -107,63 +25,78 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 212, 229, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 40px;
-            z-index: 100;
+            padding: 30px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 100;
         }
         
-        .logo-link {
-            background-color: #FFD700;
-            padding: 10px 25px;
+        .logo {
+            background: #FFD700;
+            padding: 10px 30px;
             border-radius: 50px;
             font-size: 24px;
             font-weight: 400;
-            color: #000;
             text-decoration: none;
-            transition: transform 0.3s;
-        }
-        
-        .logo-link:hover {
-            transform: scale(1.05);
+            color: #000;
         }
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
         
         .nav-links a {
-            color: #000;
             text-decoration: none;
-            font-size: 18px;
+            color: #000;
+            font-size: 20px;
             transition: opacity 0.3s;
         }
         
         .nav-links a:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
-
-        /* Thank You Section */
-        .thank-you-section {
-            min-height: 100vh;
+        
+        /* Main Content */
+        .main-content {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 120px 20px 60px;
+            min-height: 100vh;
+            padding: 120px 20px 40px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
             text-align: center;
         }
         
-        .lemon-celebration {
-            width: 200px;
-            height: 113px;
+        /* Success View - Initial screen */
+        .success-view {
+            display: none;
+        }
+        
+        .success-view.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Animated Lemon */
+        .lemon-success-container {
             margin-bottom: 30px;
-            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .lemon-success {
+            width: 80px;
+            height: 45px;
+            animation: bounce 2s infinite;
         }
         
         @keyframes bounce {
@@ -171,351 +104,330 @@
             50% { transform: translateY(-20px); }
         }
         
-        .success-icon {
+        .success-title {
             font-size: 72px;
-            margin-bottom: 20px;
-        }
-        
-        .thank-you-title {
-            font-size: 48px;
             font-weight: 200;
-            margin-bottom: 20px;
-            color: #000;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
         }
         
-        .thank-you-subtitle {
-            font-size: 24px;
-            opacity: 0.8;
-            margin-bottom: 40px;
-            max-width: 600px;
+        .emoji {
+            display: inline-block;
+            margin-left: 20px;
         }
         
-        .waitlist-info {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+        .success-subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 80px;
+            opacity: 0.9;
+        }
+        
+        /* Waitlist Glass Box */
+        .waitlist-box {
+            display: inline-block;
+            margin-bottom: 80px;
+        }
+        
+        .waitlist-glass-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            margin-bottom: 40px;
+            padding: 30px 50px;
+            display: inline-block;
         }
         
         .waitlist-number {
-            font-size: 36px;
+            font-size: 80px;
+            font-weight: 200;
             color: #FFD700;
-            font-weight: 600;
             margin-bottom: 10px;
         }
         
         .waitlist-text {
-            font-size: 18px;
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .contact-text {
+            font-size: 28px;
+            margin-bottom: 60px;
             opacity: 0.9;
         }
         
-        .cta-button {
+        .yellow-button {
+            display: inline-block;
             background: #FFD700;
             color: #000;
-            padding: 15px 40px;
-            font-size: 20px;
-            font-weight: 500;
-            border: none;
+            padding: 20px 50px;
             border-radius: 50px;
+            font-size: 28px;
+            text-decoration: none;
+            border: none;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 20px;
         }
         
-        .cta-button:hover {
+        .yellow-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
-        /* Pricing Section */
-        .pricing-section {
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #FFD4E5 0%, rgba(255, 255, 255, 0.3) 100%);
-        }
-        
-        .section-title {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        
-        .section-subtitle {
-            font-size: 20px;
-            text-align: center;
-            opacity: 0.8;
-            margin-bottom: 60px;
-        }
-        
-        .pricing-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1200px;
+        /* Qualification View */
+        .qualification-view {
+            display: none;
+            max-width: 500px;
             margin: 0 auto;
         }
         
-        .pricing-card {
+        .qualification-view.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .qualification-form {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px 30px;
-            width: 320px;
+            transition: all 300ms ease;
+        }
+        
+        .qualification-form.sliding-up {
+            transform: translateY(-30px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .form-title {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 30px;
             text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
         }
         
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-card.featured {
-            background: rgba(255, 215, 0, 0.2);
-            border: 2px solid #FFD700;
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #FFD700;
-            color: #000;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        
-        .pricing-plan {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .pricing-price {
-            font-size: 48px;
-            font-weight: 200;
-            margin: 20px 0;
-        }
-        
-        .pricing-price span {
-            font-size: 18px;
-            opacity: 0.7;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
+        .form-group {
+            margin-bottom: 20px;
             text-align: left;
         }
         
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        label {
+            display: block;
+            margin-bottom: 8px;
             font-size: 16px;
         }
         
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .pricing-features li:before {
-            content: "✓ ";
-            color: #FFD700;
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        
-        .select-plan-btn {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #000;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+        textarea,
+        input[type="number"],
+        select {
             width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            outline: none;
         }
         
-        .select-plan-btn:hover {
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
             background: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
-        .pricing-card.featured .select-plan-btn {
+        .submit-button {
+            width: 100%;
+            padding: 15px;
             background: #FFD700;
-            border: 1px solid #FFD700;
-        }
-        
-        .pricing-card.featured .select-plan-btn:hover {
-            background: #FFC700;
-        }
-        
-        /* Next Steps Section */
-        .next-steps {
-            padding: 60px 20px;
-            text-align: center;
-            background: #FFD4E5;
-        }
-        
-        .steps-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            max-width: 900px;
-            margin: 40px auto;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            background: #FFD700;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .step-title {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-        
-        .step-description {
-            font-size: 16px;
-            opacity: 0.8;
-        }
-        
-        /* Blog Preview Section */
-        .blog-preview {
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
-        
-        .blog-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .blog-tag {
-            display: inline-block;
-            background: #FFD700;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .blog-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        
-        .blog-excerpt {
-            font-size: 16px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .read-more {
             color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 500;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            transition: opacity 0.3s;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .read-more:hover {
-            opacity: 0.7;
+        .submit-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
         
-        /* Footer */
-        .footer {
-            padding: 40px 20px;
-            text-align: center;
-            background: #FFD4E5;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        /* Thank You Panel */
+        .thank-you-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 300ms ease;
+            display: none;
+        }
+        
+        .thank-you-panel.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .thank-you-title {
+            font-size: 24px;
+            font-weight: 400;
             margin-bottom: 20px;
         }
         
-        .footer-links a {
-            color: #000;
-            text-decoration: none;
+        .offers-intro {
+            margin-bottom: 20px;
             font-size: 16px;
-            transition: opacity 0.3s;
         }
         
-        .footer-links a:hover {
+        .offer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .offer-text {
+            flex: 1;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .buy-button {
+            padding: 8px 20px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+        }
+        
+        .email-note {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
             opacity: 0.7;
         }
         
-        .footer-text {
-            font-size: 14px;
-            opacity: 0.6;
+        /* Too Many Leads Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         
-        /* Mobile Responsive */
+        .popup-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .popup-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-message {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: #000;
+            opacity: 0.9;
+        }
+        
+        .popup-button {
+            padding: 15px 40px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .popup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Mobile */
         @media (max-width: 768px) {
             .header {
-                padding: 15px 20px;
+                padding: 20px;
             }
             
-            .logo-link {
+            .logo {
                 font-size: 20px;
                 padding: 8px 20px;
             }
@@ -524,213 +436,275 @@
                 display: none;
             }
             
-            .thank-you-title {
-                font-size: 36px;
+            .success-title {
+                font-size: 48px;
             }
             
-            .thank-you-subtitle {
-                font-size: 20px;
+            .success-subtitle {
+                font-size: 24px;
             }
             
-            .section-title {
-                font-size: 32px;
+            .waitlist-glass-container {
+                padding: 20px 30px;
             }
             
-            .pricing-container {
+            .waitlist-number {
+                font-size: 60px;
+            }
+            
+            .contact-text {
+                font-size: 22px;
+            }
+            
+            .yellow-button {
+                font-size: 22px;
+                padding: 16px 40px;
+            }
+            
+            .offer-item {
                 flex-direction: column;
-                align-items: center;
+                gap: 10px;
             }
             
-            .pricing-card {
-                width: 90%;
-                max-width: 320px;
+            .buy-button {
+                width: 100%;
             }
             
-            .pricing-card.featured {
-                transform: scale(1);
+            .popup-message {
+                font-size: 22px;
             }
             
-            .steps-container {
-                flex-direction: column;
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
+            .popup-button {
+                font-size: 16px;
+                padding: 12px 30px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Too Many Leads Popup -->
+    <div id="tooManyLeadsPopup" class="popup-overlay">
+        <div class="popup-content">
+            <p class="popup-message">That's too much lemonade for you.<br>We only bring leads that can close.</p>
+            <button class="popup-button" onclick="closePopup()">Got it</button>
+        </div>
+    </div>
+    
     <!-- Header -->
     <header class="header">
-        <a href="/" class="logo-link">LemzLeads</a>
+        <a href="/" class="logo">LemzLeads</a>
         <nav class="nav-links">
             <a href="/#about">About</a>
-            <a href="/#juice">Process</a>
-            <a href="#pricing-section">Pricing</a>
+            <a href="/#process">Process</a>
         </nav>
     </header>
     
-    <!-- Thank You Section -->
-    <section class="thank-you-section">
-        <img src="lemon.png" alt="Success" class="lemon-celebration">
-        <h1 class="thank-you-title">You're In! 🎉</h1>
-        <p class="thank-you-subtitle">Welcome to the future of business development in the Midlands</p>
-        
-        <div class="waitlist-info">
-            <div class="waitlist-number">#14</div>
-            <div class="waitlist-text">Your position on the waitlist</div>
-        </div>
-        
-        <p style="font-size: 20px; margin-bottom: 30px;">
-            We'll contact you within 48 hours to discuss your business needs
-        </p>
-        
-        <button class="cta-button" onclick="scrollToPricing()">
-            View Our Pricing Plans ↓
-        </button>
-    </section>
-    
-    <!-- Pricing Section -->
-    <section id="pricing-section" class="pricing-section">
-        <h2 class="section-title">Choose Your Growth Plan</h2>
-        <p class="section-subtitle">Special early-bird pricing for waitlist members only</p>
-        
-        <div class="pricing-container">
-            <!-- Starter Plan -->
-            <div class="pricing-card">
-                <div class="pricing-plan">Starter</div>
-                <div class="pricing-price">£497<span>/month</span></div>
-                <ul class="pricing-features">
-                    <li>25 Qualified Leads/Month</li>
-                    <li>Worcester Area Focus</li>
-                    <li>Email & Phone Verified</li>
-                    <li>Basic CRM Integration</li>
-                    <li>Monthly Performance Report</li>
-                    <li>Email Support</li>
-                </ul>
-                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'starter', 'value': 497});">
-                    Reserve This Plan
+    <div class="main-content">
+        <div class="container">
+            <!-- Initial Success View -->
+            <div id="successView" class="success-view active">
+                <div class="lemon-success-container">
+                    <img src="lemon.png" alt="Success" class="lemon-success">
+                </div>
+                
+                <h1 class="success-title">You're In! <span class="emoji">🎉</span></h1>
+                <p class="success-subtitle">After building two 7-figure companies, I'm now offering leads and business development support across the Midlands — using the same GTM strategies that built my own.</p>
+                
+                <div class="waitlist-box">
+                    <div class="waitlist-glass-container">
+                        <div class="waitlist-number">#<span id="waitlistNumber">15</span></div>
+                        <div class="waitlist-text">Your position on the waitlist</div>
+                    </div>
+                </div>
+                
+                <p class="contact-text">We'll contact you within 48 hours to discuss your business needs</p>
+                
+                <button class="yellow-button" onclick="showQualification()">
+                    View Our Pricing Plans ↓
                 </button>
             </div>
             
-            <!-- Growth Plan -->
-            <div class="pricing-card featured">
-                <div class="pricing-badge">MOST POPULAR</div>
-                <div class="pricing-plan">Growth</div>
-                <div class="pricing-price">£997<span>/month</span></div>
-                <ul class="pricing-features">
-                    <li>60 Qualified Leads/Month</li>
-                    <li>Entire Midlands Coverage</li>
-                    <li>Decision Maker Direct Contacts</li>
-                    <li>Full CRM Integration</li>
-                    <li>Weekly Performance Calls</li>
-                    <li>Dedicated Account Manager</li>
-                    <li>Lead Scoring & Qualification</li>
-                    <li><strong>30-Day Money Back Guarantee</strong></li>
-                </ul>
-                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'growth', 'value': 997});">
-                    Reserve This Plan - Save £200/mo
-                </button>
-            </div>
-            
-            <!-- Enterprise Plan -->
-            <div class="pricing-card">
-                <div class="pricing-plan">Enterprise</div>
-                <div class="pricing-price">£2,497<span>/month</span></div>
-                <ul class="pricing-features">
-                    <li>150+ Qualified Leads/Month</li>
-                    <li>National Coverage</li>
-                    <li>C-Suite Direct Access</li>
-                    <li>Custom Integrations</li>
-                    <li>Daily Check-ins Available</li>
-                    <li>Team of 3 Dedicated Experts</li>
-                    <li>Custom Reporting Dashboard</li>
-                    <li>Competitor Intelligence</li>
-                    <li><strong>Performance Guarantee</strong></li>
-                </ul>
-                <button class="select-plan-btn" onclick="gtag('event', 'select_plan', {'plan': 'enterprise', 'value': 2497});">
-                    Reserve This Plan
-                </button>
+            <!-- Qualification Form (hidden initially) -->
+            <div id="qualificationView" class="qualification-view">
+                <div id="qualificationForm" class="qualification-form">
+                    <h2 class="form-title">Help us understand your needs</h2>
+                    
+                    <form id="qualifyForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="challenges">What are your current challenges?*</label>
+                            <textarea id="challenges" name="challenges" required placeholder="Tell us about your lead generation challenges..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currentLeads">How many leads do you get a month right now?*</label>
+                            <input type="number" id="currentLeads" name="currentLeads" min="0" required placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">What is your budget?*</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select budget range...</option>
+                                <option value="500">£500/month</option>
+                                <option value="1000-2000">£1-2k/month</option>
+                                <option value="2500+">£2.5k+/month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectedLeads">How many leads do you expect a month?*</label>
+                            <input type="number" id="expectedLeads" name="expectedLeads" min="0" required placeholder="0">
+                        </div>
+                        
+                        <!-- Hidden fields -->
+                        <input type="hidden" id="email" name="email">
+                        <input type="hidden" id="name" name="name">
+                        <input type="hidden" id="utm_source" name="utm_source">
+                        <input type="hidden" id="utm_campaign" name="utm_campaign">
+                        <input type="hidden" id="page_url" name="page_url">
+                        <input type="hidden" id="timestamp" name="timestamp">
+                        
+                        <button type="submit" class="submit-button" id="submitBtn">Submit</button>
+                        <div class="error-message" id="errorMsg"></div>
+                    </form>
+                </div>
+                
+                <!-- Thank You Panel (hidden initially) -->
+                <div id="thankYouPanel" class="thank-you-panel">
+                    <div class="thank-you-title">Thanks — we'll be in touch within 24 hours.</div>
+                    <div class="offers-intro">Not sure yet? Try us first:</div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">7-day trial of our lead system for £47</span>
+                        <button class="buy-button" id="buy-trial-47" onclick="checkout('trial-47', 47)">Buy Now</button>
+                    </div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">Starter pack of 10-15 leads for £97</span>
+                        <button class="buy-button" id="buy-starter-97" onclick="checkout('starter-97', 97)">Buy Now</button>
+                    </div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">One-off 'Quick Win' campaign for £147</span>
+                        <button class="buy-button" id="buy-quickwin-147" onclick="checkout('quickwin-147', 147)">Buy Now</button>
+                    </div>
+                    
+                    <div class="email-note">We'll also email your receipt and access details.</div>
+                </div>
             </div>
         </div>
-        
-        <p style="text-align: center; margin-top: 40px; font-size: 18px; opacity: 0.8;">
-            💡 <strong>Waitlist Bonus:</strong> Lock in these prices forever - they increase by 20% for public launch
-        </p>
-    </section>
-    
-    <!-- Next Steps Section -->
-    <section class="next-steps">
-        <h2 class="section-title">What Happens Next?</h2>
-        
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-title">Discovery Call</div>
-                <div class="step-description">15-minute call to understand your ideal customer profile</div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-title">Market Analysis</div>
-                <div class="step-description">We identify 500+ prospects in your target market</div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-title">Launch Campaign</div>
-                <div class="step-description">Start receiving qualified leads within 7 days</div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Blog Preview Section -->
-    <section class="blog-preview">
-        <h2 class="section-title">While You Wait: Learn & Grow</h2>
-        <p class="section-subtitle">Expert insights on business development in the Midlands</p>
-        
-        <div class="blog-grid">
-            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'cold-calling-dead'});">
-                <span class="blog-tag">STRATEGY</span>
-                <h3 class="blog-title">Why Cold Calling is Dead: The New B2B Playbook</h3>
-                <p class="blog-excerpt">Discover why 87% of Midlands businesses have abandoned cold calling and what's replacing it...</p>
-                <a href="#" class="read-more">Read More →</a>
-            </article>
-            
-            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'worcester-growth'});">
-                <span class="blog-tag">LOCAL INSIGHTS</span>
-                <h3 class="blog-title">Worcester's Hidden B2B Goldmine: 2025 Report</h3>
-                <p class="blog-excerpt">Analysis of 1,000+ Worcester businesses reveals untapped opportunities in 3 key sectors...</p>
-                <a href="#" class="read-more">Read More →</a>
-            </article>
-            
-            <article class="blog-card" onclick="gtag('event', 'blog_click', {'article': 'lead-qualification'});">
-                <span class="blog-tag">TACTICS</span>
-                <h3 class="blog-title">The 5-Point Lead Qualification Framework</h3>
-                <p class="blog-excerpt">How to identify buyers vs. browsers and focus on the 20% that drive 80% of revenue...</p>
-                <a href="#" class="read-more">Read More →</a>
-            </article>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="mailto:hello@lemzleads.com">Contact</a>
-        </div>
-        <p class="footer-text">© 2025 Lemzz Leads - Business Development for Midlands SMBs</p>
-    </footer>
+    </div>
     
     <script>
-    // Dynamic waitlist number (randomize between 12-18 for urgency)
-    window.addEventListener('DOMContentLoaded', function() {
-        const waitlistNum = Math.floor(Math.random() * 7) + 12;
-        document.querySelector('.waitlist-number').textContent = '#' + waitlistNum;
-    });
+        // Get URL params
+        function getParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name) || '';
+        }
+        
+        // Too Many Leads Validation
+        function showLeadsPopup() {
+            document.getElementById('tooManyLeadsPopup').classList.add('show');
+        }
+        
+        function closePopup() {
+            document.getElementById('tooManyLeadsPopup').classList.remove('show');
+            // Reset to maximum allowed (50)
+            document.getElementById('expectedLeads').value = 50;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set random waitlist number
+            document.getElementById('waitlistNumber').textContent = 
+                Math.floor(Math.random() * 8) + 12;
+            
+            // Populate hidden fields from Contact Us form
+            document.getElementById('email').value = getParam('email');
+            document.getElementById('name').value = getParam('name');
+            document.getElementById('utm_source').value = getParam('utm_source');
+            document.getElementById('utm_campaign').value = getParam('utm_campaign');
+            document.getElementById('page_url').value = window.location.href;
+            document.getElementById('timestamp').value = new Date().toISOString();
+            
+            // Add validation to expectedLeads field
+            document.getElementById('expectedLeads').addEventListener('change', function() {
+                if (parseInt(this.value) > 50) {
+                    showLeadsPopup();
+                }
+            });
+        });
+        
+        // Show qualification form
+        function showQualification() {
+            document.getElementById('successView').style.display = 'none';
+            document.getElementById('qualificationView').classList.add('active');
+        }
+        
+        // Handle form submission
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+            
+            const formData = {
+                challenges: document.getElementById('challenges').value,
+                currentLeads: parseInt(document.getElementById('currentLeads').value),
+                budget: document.getElementById('budget').value,
+                expectedLeads: parseInt(document.getElementById('expectedLeads').value),
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                utm_source: document.getElementById('utm_source').value,
+                utm_campaign: document.getElementById('utm_campaign').value,
+                page_url: document.getElementById('page_url').value,
+                timestamp: document.getElementById('timestamp').value
+            };
+            
+            // Store for checkout
+            sessionStorage.setItem('qualificationData', JSON.stringify(formData));
+            
+            try {
+                const response = await fetch('/api/qualify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    // Success - slide up form, show thank you
+                    document.getElementById('qualificationForm').classList.add('sliding-up');
+                    setTimeout(() => {
+                        document.getElementById('thankYouPanel').classList.add('show');
+                    }, 300);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Error - show message and re-enable
+                btn.disabled = false;
+                btn.textContent = originalText;
+                document.getElementById('errorMsg').textContent = "We couldn't save your answers. Please try again.";
+                document.getElementById('errorMsg').classList.add('show');
+            }
+        }
+        
+        // Handle checkout
+        function checkout(product, price) {
+            const data = JSON.parse(sessionStorage.getItem('qualificationData') || '{}');
+            const params = new URLSearchParams({
+                email: data.email,
+                name: data.name,
+                product: product,
+                price: price,
+                challenges: data.challenges,
+                currentLeads: data.currentLeads,
+                budget: data.budget,
+                expectedLeads: data.expectedLeads
+            });
+            window.location.href = `/checkout/${product}?${params.toString()}`;
+        }
     </script>
 </body>
 </html>
