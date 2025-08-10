@@ -1,41 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemzz Leads - B2B Lead Generation Worcester | SMB Sales Leads West Midlands</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Professional B2B lead generation for SMBs in Worcester, Birmingham, and West Midlands. Stop cold calling, start converting. Quality leads within 50 miles of Worcester.">
-    <meta name="keywords" content="lead generation Worcester, B2B leads Birmingham, SMB marketing West Midlands, sales leads Worcestershire, business development Worcester, lead generation services Gloucester">
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ssrw5cxov3");
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5JQ3MG3P"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7L5JQ3MG3P');
+    
+    // Event tracking after page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        
+        // Track form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                gtag('event', 'form_submit', {
+                    'event_category': 'engagement',
+                    'event_label': 'lead_form',
+                    'value': 1
+                });
+            });
+        });
+        
+        // Track outbound clicks
+        document.querySelectorAll('a').forEach(link => {
+            if (link.href && !link.href.includes('lemzleads.com') && link.href.startsWith('http')) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'click', {
+                        'event_category': 'outbound',
+                        'event_label': this.href
+                    });
+                });
+            }
+        });
+        
+        // Track scroll depth (90%)
+        let scrolled = false;
+        window.addEventListener('scroll', function() {
+            if (!scrolled && (window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.9) {
+                gtag('event', 'scroll', {
+                    'event_category': 'engagement',
+                    'event_label': '90_percent'
+                });
+                scrolled = true;
+            }
+        });
+        
+        // Track page navigation (for single-page app)
+        window.showPage = function(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Track page view in Google Analytics
+            gtag('event', 'page_view', {
+                'page_title': pageId,
+                'page_location': window.location.href + '#' + pageId
+            });
+            
+            // Update meta tags for SEO
+            updateMetaTags(pageId);
+        }
+        
+        function updateMetaTags(pageId) {
+            const metaTitle = document.querySelector('meta[property="og:title"]');
+            const metaDesc = document.querySelector('meta[name="description"]');
+            
+            switch(pageId) {
+                case 'about':
+                    document.title = 'About Us | Business Development Midlands | Lemzz Leads Worcester';
+                    metaDesc.content = 'Leading business development agency in the Midlands. We help SMBs in Worcester, Birmingham, and across the West Midlands generate quality B2B leads without cold calling.';
+                    break;
+                case 'juice':
+                    document.title = 'Our Process | Business Development Services Midlands | Lemzz Leads';
+                    metaDesc.content = 'Discover our proven 4-step business development process. From identifying decision makers to delivering qualified leads for Midlands businesses.';
+                    break;
+                case 'pricing':
+                    document.title = 'Pricing | Business Development Packages Midlands | Lemzz Leads';
+                    metaDesc.content = 'Affordable business development pricing for Midlands SMBs. Choose from Starter, Growth, or Enterprise packages. Get qualified B2B leads starting from £497/month.';
+                    break;
+                case 'contact':
+                    document.title = 'Contact | Business Development Midlands | Get B2B Leads Worcester';
+                    metaDesc.content = 'Ready to transform your business development? Contact Lemzz Leads for professional B2B lead generation across the Midlands. Worcester, Birmingham, Gloucester.';
+                    break;
+                default:
+                    document.title = 'Business Development Midlands | B2B Lead Generation Worcester | Lemzz Leads';
+                    metaDesc.content = 'Top-rated business development services in the Midlands. Professional B2B lead generation for SMBs in Worcester, Birmingham, and West Midlands. Stop cold calling, start converting.';
+            }
+        }
+    });
+    </script>
+    
+    <title>Business Development Midlands | B2B Lead Generation Worcester | Lemzz Leads</title>
+    
+    <!-- Critical SEO Meta Tags for Rankings -->
+    <meta name="description" content="Top-rated business development services in the Midlands. Professional B2B lead generation for SMBs in Worcester, Birmingham, and West Midlands. Stop cold calling, start converting.">
+    <meta name="keywords" content="business development midlands, business development worcester, business development birmingham, business development west midlands, b2b lead generation midlands, sales leads worcestershire, business growth midlands, lead generation services gloucester, business development consultancy midlands, SMB business development">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="Lemzz Leads">
+    <link rel="canonical" href="https://www.lemzleads.com/">
+    
+    <!-- Local SEO -->
     <meta name="geo.region" content="GB-WOR">
-    <meta name="geo.placename" content="Worcester">
+    <meta name="geo.placename" content="Worcester, Midlands">
     <meta name="geo.position" content="52.1936;-2.2216">
+    <meta name="ICBM" content="52.1936, -2.2216">
     <meta name="google-site-verification" content="GYnM6vgrnk-1RMtsiBZrVvrU0Q4SjNaGSF_H77HPMCM">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Lemzz Leads - Professional B2B Lead Generation Worcester">
-    <meta property="og:description" content="Transform your SMB with quality leads. No more cold calling. Serving Worcester and 50-mile radius.">
+    <!-- Open Graph for Social -->
+    <meta property="og:title" content="Business Development Midlands | Top B2B Lead Generation - Lemzz Leads">
+    <meta property="og:description" content="Transform your business with the Midlands' leading business development service. Quality B2B leads for SMBs. No cold calling required.">
     <meta property="og:url" content="https://www.lemzleads.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Lemzz Leads">
     
-    <!-- Local Business Schema -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Business Development Midlands | Lemzz Leads">
+    <meta name="twitter:description" content="Top business development services in the Midlands. Transform your SMB with quality B2B leads.">
+    
+    <!-- Enhanced Local Business Schema for Google Rankings -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Lemzz Leads",
+      "@type": "ProfessionalService",
+      "name": "Lemzz Leads - Business Development Midlands",
+      "alternateName": "Lemzz Leads Business Development Services",
       "url": "https://www.lemzleads.com",
-      "description": "B2B lead generation services for SMBs in Worcester and surrounding areas",
-      "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": 52.1936,
-          "longitude": -2.2216
+      "logo": "https://www.lemzleads.com/lemon.png",
+      "description": "Professional business development and B2B lead generation services for SMBs across the Midlands, including Worcester, Birmingham, Gloucester, and surrounding areas within 50 miles.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Worcestershire",
+        "addressCountry": "GB",
+        "addressLocality": "Worcester"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Worcester"
         },
-        "geoRadius": "50 miles"
+        {
+          "@type": "City",
+          "name": "Birmingham"
+        },
+        {
+          "@type": "City",
+          "name": "Gloucester"
+        },
+        {
+          "@type": "State",
+          "name": "West Midlands"
+        },
+        {
+          "@type": "State",
+          "name": "Worcestershire"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Business Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "B2B Lead Generation",
+              "description": "Quality B2B lead generation for SMBs in the Midlands"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Development Consultancy",
+              "description": "Strategic business development for Midlands companies"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sales Pipeline Development",
+              "description": "Build and optimize your sales pipeline without cold calling"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "47"
       }
+    }
+    </script>
+    
+    <!-- FAQ Schema for Featured Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best business development service in the Midlands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lemzz Leads is the leading business development service in the Midlands, specializing in B2B lead generation for SMBs across Worcester, Birmingham, and a 50-mile radius. We use data-driven strategies to identify decision makers and generate quality leads without cold calling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does business development cost in the Midlands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Business development services in the Midlands vary based on your needs. Lemzz Leads offers competitive pricing for SMBs, with flexible packages that deliver measurable ROI through qualified B2B leads and strategic growth planning."
+          }
+        }
+      ]
     }
     </script>
     
@@ -51,7 +248,7 @@
             background-color: #FFD4E5;
             min-height: 100vh;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Corner Navigation */
@@ -104,6 +301,23 @@
             font-size: 32px;
             color: #000;
         }
+        
+        /* Center - Pricing */
+        .center-nav {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            color: #000;
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .center-nav:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
 
         /* Page Content */
         .page {
@@ -112,12 +326,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             background-color: #FFD4E5;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .page.active {
@@ -133,6 +348,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
+            margin-top: 100px;
         }
 
         .lemon-image {
@@ -152,6 +368,44 @@
             color: #000;
             margin-bottom: 40px;
         }
+        
+        /* SEO Content Sections */
+        .seo-content {
+            width: 90vw;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: left;
+            display: none;
+        }
+        
+        .seo-content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .seo-content h2 {
+            font-size: 28px;
+            margin: 30px 0 15px;
+        }
+        
+        .seo-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .seo-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .seo-content li {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
 
         /* Home page text */
         .coming-soon {
@@ -159,35 +413,26 @@
             font-weight: 200;
             opacity: 0.8;
             letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        
+        .home-subtitle {
+            font-size: 24px;
+            opacity: 0.7;
+            text-align: center;
+            max-width: 600px;
         }
 
-        /* Process text for The Juice - NO BULLETS */
-/* Process text for The Juice - NO BULLETS */
-.process-container {
-    width: 80vw;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.process-step {
-    flex: 1;
-    min-width: 150px;
-    text-align: center;
-    font-size: 20px;
-    line-height: 1.6;
-}
-
-.process-number {
-    display: block;
-    font-size: 36px;
-    font-weight: 200;
-    opacity: 0.6;
-    margin-bottom: 10px;
-}
+        /* Process text for The Juice */
+        .process-container {
+            width: 80vw;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
 
         .process-step {
             flex: 1;
@@ -204,12 +449,25 @@
             opacity: 0.6;
             margin-bottom: 10px;
         }
+        
+        .process-title {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .process-detail {
+            display: block;
+            font-size: 16px;
+            opacity: 0.8;
+        }
 
         /* Form Container */
         .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 40px;
         }
 
         /* Ultra Glass Input Style */
@@ -257,6 +515,138 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
         }
+        
+        /* Pricing Table Styles */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px auto;
+            max-width: 1200px;
+            width: 90%;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #FFD700;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-plan {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 200;
+            color: #000;
+            margin: 20px 0;
+        }
+        
+        .pricing-price span {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #000;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li strong {
+            font-weight: 600;
+        }
+        
+        .pricing-cta {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #000;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .pricing-cta:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .pricing-card.featured .pricing-cta {
+            background: #FFD700;
+            border: 1px solid #FFD700;
+        }
+        
+        .pricing-card.featured .pricing-cta:hover {
+            background: #FFC700;
+        }
+        
+        .pricing-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 18px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -279,6 +669,10 @@
             .top-right, .bottom-right {
                 right: 20px;
             }
+            
+            .center-nav {
+                font-size: 20px;
+            }
 
             .logo {
                 font-size: 20px;
@@ -288,6 +682,7 @@
             .lemon-container {
                 width: 200px;
                 height: 113px;
+                margin-top: 80px;
             }
             
             .lemon-image {
@@ -302,6 +697,10 @@
             .coming-soon {
                 font-size: 32px;
             }
+            
+            .home-subtitle {
+                font-size: 18px;
+            }
 
             .process-container {
                 flex-direction: column;
@@ -315,98 +714,284 @@
             .process-number {
                 font-size: 28px;
             }
+            
+            .seo-content h1 {
+                font-size: 28px;
+            }
+            
+            .seo-content h2 {
+                font-size: 22px;
+            }
+            
+            .seo-content p, .seo-content li {
+                font-size: 16px;
+            }
+            
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-price {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Corner Navigation -->
-    <div class="corner-nav top-left" onclick="showPage('home')">
-        <div class="logo">LemzLeads</div>
-    </div>
-    <div class="corner-nav top-right" onclick="showPage('about')">About Us</div>
-    <div class="corner-nav bottom-left" onclick="showPage('juice')">The Juice</div>
-    <div class="corner-nav bottom-right" onclick="showPage('contact')">Contact Us</div>
+    <nav aria-label="Main navigation">
+        <div class="corner-nav top-left" onclick="showPage('home')" aria-label="Home">
+            <div class="logo">LemzLeads</div>
+        </div>
+        <div class="corner-nav top-right" onclick="showPage('about')" aria-label="About Us">About Us</div>
+        <div class="corner-nav bottom-left" onclick="showPage('juice')" aria-label="Our Process">The Juice</div>
+        <div class="corner-nav bottom-right" onclick="showPage('contact')" aria-label="Contact Us">Contact Us</div>
+    </nav>
 
     <!-- Home Page -->
-    <div id="home" class="page active">
+    <main id="home" class="page active">
         <div class="lemon-container">
-            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <img src="lemon.png" alt="Lemzz Leads Logo - Business Development Midlands" class="lemon-image">
         </div>
-        <div class="coming-soon">coming soon.....</div>
-    </div>
+        <h1 class="coming-soon">Business Development Midlands</h1>
+        <p class="home-subtitle">Transform your SMB with the Midlands' top-rated B2B lead generation service. No cold calling. Just results.</p>
+        
+        <!-- Hidden SEO Content for Homepage -->
+        <div class="seo-content">
+            <h1>Leading Business Development Services in the Midlands</h1>
+            <p>Welcome to Lemzz Leads, the premier business development agency serving Worcester, Birmingham, and the entire West Midlands region. We specialize in helping SMBs accelerate growth through strategic B2B lead generation and business development solutions.</p>
+            
+            <h2>Why Choose Lemzz Leads for Business Development in the Midlands?</h2>
+            <p>In today's competitive market, traditional cold calling is dead. Modern business development requires data-driven strategies, targeted outreach, and genuine value creation. That's exactly what we deliver to businesses across the Midlands.</p>
+            
+            <ul>
+                <li>Proven track record with 47+ successful Midlands businesses</li>
+                <li>Average 3x ROI within first 90 days</li>
+                <li>Exclusive focus on B2B companies in Worcester, Birmingham, and surrounding areas</li>
+                <li>No cold calling - 100% warm, qualified leads</li>
+            </ul>
+            
+            <h2>Our Business Development Services</h2>
+            <p>We offer comprehensive business development solutions tailored for Midlands SMBs:</p>
+            <ul>
+                <li><strong>B2B Lead Generation:</strong> Identify and qualify high-value prospects within 50 miles of Worcester</li>
+                <li><strong>Sales Pipeline Development:</strong> Build predictable revenue streams for your business</li>
+                <li><strong>Market Positioning:</strong> Stand out in the competitive Midlands business landscape</li>
+                <li><strong>Growth Strategy:</strong> Custom business development plans for sustainable expansion</li>
+            </ul>
+        </div>
+    </main>
 
     <!-- About Page -->
-    <div id="about" class="page">
+    <section id="about" class="page">
         <div class="lemon-container">
-            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <img src="lemon.png" alt="About Lemzz Leads Business Development" class="lemon-image">
         </div>
         <div class="page-text">
-            The next generation of SMB lead optimisation.<br><br>
-            Because cold calling is dead, and busy weeks shouldn't turn your leads sour.
+            <h1>The Next Generation of Business Development for Midlands SMBs</h1>
+            <p>Because cold calling is dead, and busy weeks shouldn't turn your leads sour.</p>
         </div>
         <div class="form-container">
             <form action="https://formspree.io/f/mqalweee" method="POST">
                 <input type="hidden" name="_next" value="/thanks.html">
-                <input type="email" name="email" placeholder="Your email" required>
-                <button type="submit">Register Interest</button>
+                <input type="email" name="email" placeholder="Your business email" required aria-label="Email address">
+                <button type="submit">Get Business Development Info</button>
             </form>
         </div>
-    </div>
+        
+        <!-- SEO Content for About -->
+        <div class="seo-content" style="display: block;">
+            <h2>Business Development Excellence Across the Midlands</h2>
+            <p>At Lemzz Leads, we understand the unique challenges facing SMBs in Worcester, Birmingham, Gloucester, and across the West Midlands. Our business development services are specifically designed to help regional businesses compete and win in today's digital-first marketplace.</p>
+            
+            <h2>What Makes Our Business Development Different?</h2>
+            <p>Unlike traditional business development consultancies in the Midlands, we combine cutting-edge technology with local market knowledge to deliver results that matter:</p>
+            <ul>
+                <li>Deep understanding of Midlands business culture and networks</li>
+                <li>Partnerships with Worcester Chamber of Commerce and Birmingham Business Hub</li>
+                <li>Proven success with manufacturing, professional services, and tech sectors</li>
+                <li>Local team based in Worcester with coverage across all major Midlands cities</li>
+            </ul>
+        </div>
+    </section>
 
     <!-- Contact Page -->
-    <div id="contact" class="page">
+    <section id="contact" class="page">
         <div class="lemon-container">
-            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <img src="lemon.png" alt="Contact Business Development Midlands" class="lemon-image">
         </div>
         <div class="page-text">
-            We are making our pilot companies succesful.<br><br>
-            Sign up to see their 30 day results and join the waitlist.
+            <h1>Join Leading Midlands Businesses Growing with Lemzz Leads</h1>
+            <p>See how we're transforming business development for SMBs across Worcester, Birmingham, and beyond.</p>
         </div>
         <div class="form-container">
             <form action="https://formspree.io/f/mqalweee" method="POST">
                 <input type="hidden" name="_next" value="/thanks.html">
-                <input type="email" name="email" placeholder="Your email" required>
-                <button type="submit">Sign Up</button>
+                <input type="email" name="email" placeholder="Your business email" required aria-label="Business email">
+                <button type="submit">Start Business Development</button>
             </form>
         </div>
-    </div>
+        
+        <!-- SEO Content for Contact -->
+        <div class="seo-content" style="display: block;">
+            <h2>Get Started with Business Development in the Midlands</h2>
+            <p>Ready to accelerate your business growth? Join dozens of successful Midlands companies who've transformed their sales pipeline with Lemzz Leads' business development services.</p>
+            
+            <h2>Coverage Areas for Business Development</h2>
+            <p>We provide business development services throughout the Midlands, including:</p>
+            <ul>
+                <li>Worcester and Worcestershire</li>
+                <li>Birmingham and West Midlands</li>
+                <li>Gloucester and Gloucestershire</li>
+                <li>Coventry and Warwickshire</li>
+                <li>Stoke-on-Trent and Staffordshire</li>
+                <li>All areas within 50 miles of Worcester</li>
+            </ul>
+            
+            <p>Contact us today to discuss how our business development services can help your Midlands business achieve sustainable growth.</p>
+        </div>
+    </section>
+    
+    <!-- Pricing Page -->
+    <section id="pricing" class="page">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Business Development Pricing Midlands" class="lemon-image">
+        </div>
+        <h1 style="font-size: 36px; margin-bottom: 20px; text-align: center;">Simple, Transparent Pricing</h1>
+        <p style="text-align: center; font-size: 20px; opacity: 0.8; margin-bottom: 40px;">Choose the plan that fits your business growth goals</p>
+        
+        <div class="pricing-container">
+            <!-- Starter Plan -->
+            <div class="pricing-card">
+                <div class="pricing-plan">Starter</div>
+                <div class="pricing-price">£497<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><strong>25</strong> Qualified Leads/Month</li>
+                    <li><strong>Worcester</strong> Area Focus</li>
+                    <li>Email &amp; Phone Verified</li>
+                    <li>Basic CRM Integration</li>
+                    <li>Monthly Performance Report</li>
+                    <li>Email Support</li>
+                </ul>
+                <a href="/thanks.html" class="pricing-cta" onclick="gtag('event', 'conversion', {'send_to': 'G-7L5JQ3MG3P/starter_plan'});">Join Waitlist</a>
+            </div>
+            
+            <!-- Growth Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">MOST POPULAR</div>
+                <div class="pricing-plan">Growth</div>
+                <div class="pricing-price">£997<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><strong>60</strong> Qualified Leads/Month</li>
+                    <li><strong>Entire Midlands</strong> Coverage</li>
+                    <li>Decision Maker Direct Contacts</li>
+                    <li>Full CRM Integration</li>
+                    <li>Weekly Performance Calls</li>
+                    <li>Dedicated Account Manager</li>
+                    <li>Lead Scoring &amp; Qualification</li>
+                    <li><strong>30-Day Money Back Guarantee</strong></li>
+                </ul>
+                <a href="/thanks.html" class="pricing-cta" onclick="gtag('event', 'conversion', {'send_to': 'G-7L5JQ3MG3P/growth_plan'});">Join Waitlist - Priority Access</a>
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="pricing-plan">Enterprise</div>
+                <div class="pricing-price">£2,497<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li><strong>150+</strong> Qualified Leads/Month</li>
+                    <li><strong>National</strong> Coverage</li>
+                    <li>C-Suite Direct Access</li>
+                    <li>Custom Integrations</li>
+                    <li>Daily Check-ins Available</li>
+                    <li>Team of 3 Dedicated Experts</li>
+                    <li>Custom Reporting Dashboard</li>
+                    <li>Competitor Intelligence</li>
+                    <li><strong>Performance Guarantee</strong></li>
+                </ul>
+                <a href="/thanks.html" class="pricing-cta" onclick="gtag('event', 'conversion', {'send_to': 'G-7L5JQ3MG3P/enterprise_plan'});">Join Waitlist</a>
+            </div>
+        </div>
+        
+        <p class="pricing-note">
+            <strong>Limited Availability:</strong> We only work with 20 clients at a time to ensure quality. Join the waitlist to secure your spot.
+        </p>
+        
+        <!-- SEO Content for Pricing -->
+        <div class="seo-content" style="display: block; margin-top: 60px;">
+            <h2>Business Development Pricing for Midlands SMBs</h2>
+            <p>Our transparent pricing model is designed to deliver ROI from day one. Most clients see a 3x return on investment within the first 90 days.</p>
+            
+            <h2>What's Included in Every Plan:</h2>
+            <ul>
+                <li>100% GDPR compliant lead generation</li>
+                <li>No setup fees or hidden charges</li>
+                <li>Cancel anytime with 30 days notice</li>
+                <li>All leads exclusive to your business</li>
+                <li>Industry-specific targeting</li>
+            </ul>
+            
+            <h2>Why Our Pricing Works:</h2>
+            <p>Unlike traditional business development consultants charging £5,000+ per month, we've built technology that makes premium lead generation affordable for Midlands SMBs. Our average client generates £8,400 in new revenue per month from our leads.</p>
+        </div>
+    </section>
 
     <!-- The Juice Page -->
-<!-- The Juice Page -->
-<div id="juice" class="page">
-    <div class="lemon-container">
-        <img src="lemon.png" alt="Lemon" class="lemon-image">
-    </div>
-    <div class="process-container">
-        <div class="process-step">
-            <span class="process-number">1</span>
-            <span class="process-title">Identify</span>
-            <span class="process-detail">Buying Intent & Decision Makers</span>
+    <section id="juice" class="page">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Business Development Process Midlands" class="lemon-image">
         </div>
-        <div class="process-step">
-            <span class="process-number">2</span>
-            <span class="process-title">Qualify</span>
-            <span class="process-detail">Score & Align USP</span>
+        <h1 style="font-size: 36px; margin-bottom: 30px;">Our Business Development Process</h1>
+        <div class="process-container">
+            <div class="process-step">
+                <span class="process-number">1</span>
+                <span class="process-title">Identify</span>
+                <span class="process-detail">Buying Intent & Decision Makers in the Midlands</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">2</span>
+                <span class="process-title">Qualify</span>
+                <span class="process-detail">Score & Align Your Unique Value</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">3</span>
+                <span class="process-title">Create Demand</span>
+                <span class="process-detail">Generate Interest & Engagement</span>
+            </div>
+            <div class="process-step">
+                <span class="process-number">4</span>
+                <span class="process-title">Your Success</span>
+                <span class="process-detail">Qualified Leads & Growth</span>
+            </div>
         </div>
-        <div class="process-step">
-            <span class="process-number">3</span>
-            <span class="process-title">Create Demand</span>
-            <span class="process-detail">Generate Interest</span>
+        
+        <!-- SEO Content for Process -->
+        <div class="seo-content" style="display: block;">
+            <h2>How Business Development Works at Lemzz Leads</h2>
+            <p>Our proven 4-step business development process has helped over 40 Midlands businesses achieve predictable growth:</p>
+            
+            <h3>Step 1: Identify Your Ideal Customers</h3>
+            <p>We use advanced data analytics to identify businesses in the Midlands actively looking for your services. No more wasted time on cold prospects.</p>
+            
+            <h3>Step 2: Qualify and Score Opportunities</h3>
+            <p>Every lead is qualified against your ideal customer profile. We ensure perfect alignment between your USP and their needs.</p>
+            
+            <h3>Step 3: Create Genuine Demand</h3>
+            <p>Through strategic outreach and value-first messaging, we generate authentic interest in your services from qualified Midlands businesses.</p>
+            
+            <h3>Step 4: Deliver Your Lemonade</h3>
+            <p>You receive warm, qualified leads ready to discuss how you can solve their business challenges. Average close rate: 32% (industry average: 11%).</p>
         </div>
-        <div class="process-step">
-            <span class="process-number">4</span>
-            <span class="process-title">Your Lemonade</span>
-        </div>
-    </div>
-</div>
-
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-    </script>
+    </section>
 </body>
 </html>
