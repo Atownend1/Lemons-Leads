@@ -81,24 +81,29 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            background-color: #FFD4E5;
         }
 
         .page.active {
             display: flex;
         }
 
-        /* Lemon Container */
+        /* Lemon Container - PROPER SIZING FOR YOUR IMAGE */
         .lemon-container {
             position: relative;
-            width: 720px;
-            height: 405px;
+            width: 600px;
+            height: 338px;  /* 16:9 ratio for your horizontal image */
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .lemon-image {
-            width: 720px;
-            height: 203px;
+            width: 600px;
+            height: 338px;  /* Maintains perfect proportions */
             transition: transform 0.3s ease, opacity 0.3s ease;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
         }
 
         .hover-text {
@@ -106,18 +111,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 215, 0, 0.95);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
-            max-width: 350px;
-            font-size: 18px;
-            line-height: 1.6;
+            max-width: 450px;
+            font-size: 20px;
+            line-height: 1.5;
             color: #000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .lemon-container:hover .hover-text {
@@ -125,7 +130,7 @@
         }
 
         .lemon-container:hover .lemon-image {
-            transform: scale(0.95);
+            transform: scale(1.1);
             opacity: 0.3;
         }
 
@@ -196,6 +201,11 @@
 
             .lemon-container {
                 width: 360px;
+                height: 203px;  /* Maintains 16:9 on mobile */
+            }
+            
+            .lemon-image {
+                width: 360px;
                 height: 203px;
             }
         }
@@ -211,27 +221,21 @@
     <div class="corner-nav bottom-right" onclick="showPage('contact')">Contact Us</div>
 
     <!-- Home Page -->
-<div style="text-align: center;">
-    <h1 style="font-size: 48px; margin-bottom: 20px;">Website Is Coming</h1>
-    <p style="font-size: 24px; margin-bottom: 40px;">Sign up for our newsletter</p>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="email" name="email" placeholder="Your email" required style="width: 300px; padding: 15px; font-size: 16px; border: 2px solid #FFD700; border-radius: 50px; margin-bottom: 20px; background: white;">
-        <button type="submit" style="background-color: #FFD700; color: #000; border: none; padding: 15px 40px; font-size: 18px; border-radius: 50px; cursor: pointer;">Sign Up</button>
-    </form>
-</div>
+    <div id="home" class="page active">
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <div class="hover-text">coming soon.....</div>
+        </div>
+    </div>
 
     <!-- About Page -->
     <div id="about" class="page">
-<div style="text-align: center;">
-    <h1 style="font-size: 48px; margin-bottom: 20px;">Website Is Coming</h1>
-    <p style="font-size: 24px; margin-bottom: 40px;">Sign up for our newsletter</p>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="email" name="email" placeholder="Your email" required style="width: 300px; padding: 15px; font-size: 16px; border: 2px solid #FFD700; border-radius: 50px; margin-bottom: 20px; background: white;">
-        <button type="submit" style="background-color: #FFD700; color: #000; border: none; padding: 15px 40px; font-size: 18px; border-radius: 50px; cursor: pointer;">Sign Up</button>
-    </form>
-</div>
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <div class="hover-text">We are launching the next generation of SMB lead optimisation. Because cold calling sucks and leads turn to citrus when we get busy.</div>
+        </div>
         <div class="form-container show">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form action="https://formspree.io/f/mqalweee" method="POST">
                 <input type="email" name="email" placeholder="Your email" required>
                 <button type="submit">Register Interest</button>
             </form>
@@ -240,16 +244,12 @@
 
     <!-- Contact Page -->
     <div id="contact" class="page">
-<div style="text-align: center;">
-    <h1 style="font-size: 48px; margin-bottom: 20px;">Website Is Coming</h1>
-    <p style="font-size: 24px; margin-bottom: 40px;">Sign up for our newsletter</p>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="email" name="email" placeholder="Your email" required style="width: 300px; padding: 15px; font-size: 16px; border: 2px solid #FFD700; border-radius: 50px; margin-bottom: 20px; background: white;">
-        <button type="submit" style="background-color: #FFD700; color: #000; border: none; padding: 15px 40px; font-size: 18px; border-radius: 50px; cursor: pointer;">Sign Up</button>
-    </form>
-</div>
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <div class="hover-text">We are making our pilot company successful right now. Sign up to see their 30 day results.</div>
+        </div>
         <div class="form-container show">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form action="https://formspree.io/f/mqalweee" method="POST">
                 <input type="email" name="email" placeholder="Your email" required>
                 <button type="submit">Sign Up</button>
             </form>
@@ -258,14 +258,16 @@
 
     <!-- The Juice Page -->
     <div id="juice" class="page">
-<div style="text-align: center;">
-    <h1 style="font-size: 48px; margin-bottom: 20px;">Website Is Coming</h1>
-    <p style="font-size: 24px; margin-bottom: 40px;">Sign up for our newsletter</p>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="email" name="email" placeholder="Your email" required style="width: 300px; padding: 15px; font-size: 16px; border: 2px solid #FFD700; border-radius: 50px; margin-bottom: 20px; background: white;">
-        <button type="submit" style="background-color: #FFD700; color: #000; border: none; padding: 15px 40px; font-size: 18px; border-radius: 50px; cursor: pointer;">Sign Up</button>
-    </form>
-</div>
+        <div class="lemon-container">
+            <img src="lemon.png" alt="Lemon" class="lemon-image">
+            <div class="hover-text">
+                1. Identify ideal customers<br>
+                2. Qualify leads<br>
+                3. Create warm connections<br>
+                4. Convert to sales
+            </div>
+        </div>
+    </div>
 
     <script>
         function showPage(pageId) {
