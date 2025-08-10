@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemons Leads - Professional Lead Generation for Worcester Businesses</title>
+    <meta name="description" content="Transform your business challenges into qualified sales leads. Professional lead generation services for Worcester businesses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, #F8BBD9 0%, #F4C2C2 50%, #F0C9C9 100%);
+            min-height: 100vh;
+        }
+
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 3rem;
+            }
+        }
+
+        /* Enhanced Glass Effects with Better Contrast */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 2rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 215, 0, 0.6);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 30px rgba(255, 215, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 4px 15px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .glass-button:hover::before {
+            left: 100%;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 15px 35px rgba(255, 215, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Lemon Juicer Animation */
+        .lemon-juicer-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(244, 194, 194, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .juicer-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+
+        .lemon-whole {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 2s ease;
+        }
+
+        .lemon-whole::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 15px;
+            background: #90EE90;
+            border-radius: 50%;
+        }
+
+        .juicer {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(135deg, #C0C0C0, #808080);
+            border-radius: 20px 20px 0 0;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .juicer::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .juice-drops {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            border-radius: 2px;
+            opacity: 0;
+            animation: drip 0.5s ease-in-out infinite;
+        }
+
+        @keyframes drip {
+            0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(-50%) translateY(30px); }
+        }
+
+        .lemon-empty {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F5F5DC, #DDD);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .animation-text {
+            color: #FFD700;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGVsbGlwc2UgY3g9IjI1IiBjeT0iMzAiIHJ4PSIxNSIgcnk9IjE4IiBmaWxsPSIjRkZENzAwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIvPgo8ZWxsaXBzZSBjeD0iMjUiIGN5PSIxMCIgcng9IjgiIHJ5PSI1IiBmaWxsPSIjOTBFRTkwIi8+CjxwYXRoIGQ9Ik0yNSA4TDI1IDE1IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFD700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 4rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-bg {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: white;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 5rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 3rem;
+            max-width: 96rem;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            text-align: center;
+        }
+
+        .card-icon {
+            width: 4rem;
+            height: 4rem;
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-description {
+            color: white;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pricing */
+        .pricing-card {
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
+            color: #333;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .pricing-title {
+            font-size: 1.875rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-period {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: #FFD700;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonial-stars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 1.25rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-text {
+            color: white;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-author {
+            color: #FFD700;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-company {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CTA Section */
+        .cta-form {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 32rem;
+            margin: 0 auto;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(0, 0, 0, 0.6);
+            font-weight: 500;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #FFD700;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Mobile Floating Button */
+        .mobile-fab {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            z-index: 50;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+
+            .mobile-fab {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-fab {
+                display: none;
+            }
+        }
+
+        /* Fallback for browsers without backdrop-filter support */
+        @supports not (backdrop-filter: blur(20px)) {
+            .glass-card {
+                background: rgba(255, 255, 255, 0.4);
+            }
+            
+            .glass-button {
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            .section-bg {
+                background: rgba(255, 255, 255, 0.15);
+            }
+            
+            .cta-form {
+                background: rgba(255, 255, 255, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lemon Juicer Animation -->
+    <div class="lemon-juicer-animation" id="lemonAnimation">
+        <div class="juicer-container">
+            <div class="lemon-whole" id="lemonWhole"></div>
+            <div class="lemon-empty" id="lemonEmpty"></div>
+            <div class="juicer" id="juicer">
+                <div class="juice-drops" id="juiceDrops"></div>
+            </div>
+        </div>
+        <div class="animation-text" id="animationText">Squeezing out your leads...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <span class="logo-text font-montserrat">Lemons Leads</span>
+                </div>
+                <a href="#" class="glass-button">
+                    Watch Worcester Stories
+                </a>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="hero animate-on-scroll">
+                <h1 class="font-montserrat">Got Leads?</h1>
+                <p class="subtitle font-poppins">Professional lead generation for Worcester businesses</p>
+                <p class="description font-poppins">We deliver 50+ qualified sales leads monthly so you can focus on closing deals, not finding prospects.</p>
+                <a href="#contact" class="glass-button" id="getStartedBtn">
+                    Get Started Today
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problems Section -->
+    <section class="section-bg">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="section-title font-montserrat">Is Cold Calling Giving You Headaches?</h2>
+                <p class="section-description font-poppins">Worcester businesses struggle with traditional prospecting methods. We solve that.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="clock" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">No Time for Prospecting</h3>
+                        <p class="card-description font-poppins">Too busy running your business to find quality leads</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="trending-up" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">Inconsistent Lead Flow</h3>
+                        <p class="card-description font-poppins">Unpredictable revenue from feast or famine cycles</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="users" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">Poor Quality Leads</h3>
+                        <p class="card-description font-poppins">Wasting time on unqualified prospects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section>
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="section-title font-montserrat">The Worcester Lead Solution</h2>
+                <p class="section-description font-poppins">Professional lead generation that delivers results while you focus on your business.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="zap" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">50+ Fresh Leads Monthly</h3>
+                        <p class="card-description font-poppins">Qualified prospects delivered to your inbox</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="map-pin" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">Worcester Market Focus</h3>
+                        <p class="card-description font-poppins">Local businesses within 50-mile radius</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="message-square" style="color: #FFD700; width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h3 class="card-title font-montserrat">Multi-Channel Outreach</h3>
+                        <p class="card-description font-poppins">LinkedIn, email, and phone campaigns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-bg">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="section-title font-montserrat">Simple Pricing</h2>
+                <p class="section-description font-poppins">Choose the package that fits your business needs.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <!-- Starter Plan -->
+                <div class="glass-card animate-on-scroll">
+                    <div class="pricing-card">
+                        <h3 class="pricing-title font-montserrat">Starter</h3>
+                        <div class="pricing-price font-montserrat">£97</div>
+                        <p class="pricing-period font-poppins">per month</p>
+                        <ul class="pricing-features">
+                            <li class="font-poppins">25 qualified leads monthly</li>
+                            <li class="font-poppins">Email & LinkedIn outreach</li>
+                            <li class="font-poppins">Weekly performance reports</li>
+                        </ul>
+                        <a href="#contact" class="glass-button" style="width: 100%; justify-content: center;">Get Started</a>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="glass-card animate-on-scroll pricing-card">
+                    <div class="pricing-badge">MOST POPULAR</div>
+                    <h3 class="pricing-title font-montserrat">Professional</h3>
+                    <div class="pricing-price font-montserrat">£197</div>
+                    <p class="pricing-period font-poppins">per month</p>
+                    <ul class="pricing-features">
+                        <li class="font-poppins">50 qualified leads monthly</li>
+                        <li class="font-poppins">Multi-channel outreach</li>
+                        <li class="font-poppins">CRM integration</li>
+                        <li class="font-poppins">Priority support</li>
+                    </ul>
+                    <a href="#contact" class="glass-button" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="glass-card animate-on-scroll">
+                    <div class="pricing-card">
+                        <h3 class="pricing-title font-montserrat">Enterprise</h3>
+                        <div class="pricing-price font-montserrat">£397</div>
+                        <p class="pricing-period font-poppins">per month</p>
+                        <ul class="pricing-features">
+                            <li class="font-poppins">100+ qualified leads monthly</li>
+                            <li class="font-poppins">Full campaign management</li>
+                            <li class="font-poppins">Dedicated account manager</li>
+                            <li class="font-poppins">Custom integrations</li>
+                        </ul>
+                        <a href="#contact" class="glass-button" style="width: 100%; justify-content: center;">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section>
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="section-title font-montserrat">Worcester Success Stories</h2>
+                <p class="section-description font-poppins">Local businesses are already seeing results.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="glass-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text font-poppins">"Increased our qualified leads by 300% in just 2 months. The quality is exceptional."</p>
+                    <p class="testimonial-author font-montserrat">Sarah Mitchell</p>
+                    <p class="testimonial-company font-poppins">Mitchell Manufacturing</p>
+                    <p class="testimonial-company font-poppins">Worcester</p>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text font-poppins">"Finally have a predictable pipeline. No more feast or famine months."</p>
+                    <p class="testimonial-author font-montserrat">James Thompson</p>
+                    <p class="testimonial-company font-poppins">Thompson Legal</p>
+                    <p class="testimonial-company font-poppins">Evesham</p>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text font-poppins">"The ROI is incredible. Each lead package pays for itself within days."</p>
+                    <p class="testimonial-author font-montserrat">Emma Davies</p>
+                    <p class="testimonial-company font-poppins">Davies Financial</p>
+                    <p class="testimonial-company font-poppins">Malvern</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-bg" id="contact">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="section-title font-montserrat">Ready to Transform Your Lead Generation?</h2>
+                <p class="section-description font-poppins">Join Worcester businesses that have stopped worrying about where their next customer will come from.</p>
+                
+                <div class="cta-form">
+                    <h3 style="color: #FFD700; margin-bottom: 1.5rem; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);" class="font-montserrat">Get Your First 25 Leads Free</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" class="form-input" required>
+                        <input type="email" name="email" placeholder="Business Email" class="form-input" required>
+                        <input type="text" name="company" placeholder="Company Name" class="form-input" required>
+                        <button type="submit" class="glass-button form-button">Give It A Squeeze</button>
+                    </form>
+                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-top: 1rem; font-weight: 500; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);" class="font-poppins">
+                        No credit card required. Cancel anytime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <div class="logo-icon"></div>
+                <span class="logo-text font-montserrat">Lemons Leads</span>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; font-weight: 500;" class="font-poppins">
+                Professional lead generation for Worcester businesses
+            </p>
+            <div class="footer-links">
+                <a href="mailto:alex@lemonsleads.co.uk" class="footer-link">
+                    <i data-lucide="mail" style="width: 1.5rem; height: 1.5rem;"></i>
+                </a>
+                <a href="tel:+441905123456" class="footer-link">
+                    <i data-lucide="phone" style="width: 1.5rem; height: 1.5rem;"></i>
+                </a>
+                <a href="#" class="footer-link">
+                    <i data-lucide="message-circle" style="width: 1.5rem; height: 1.5rem;"></i>
+                </a>
+            </div>
+            <p class="footer-text font-poppins">© 2024 Lemons Leads. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Button -->
+    <a href="#contact" class="mobile-fab glass-button">
+        <i data-lucide="arrow-right" style="width: 1.5rem; height: 1.5rem;"></i>
+    </a>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Lemon Juicer Animation
+        function playLemonJuicerAnimation() {
+            const animation = document.getElementById('lemonAnimation');
+            const lemonWhole = document.getElementById('lemonWhole');
+            const lemonEmpty = document.getElementById('lemonEmpty');
+            const juiceDrops = document.getElementById('juiceDrops');
+            const animationText = document.getElementById('animationText');
+            
+            // Show animation overlay
+            animation.style.display = 'flex';
+            
+            // Step 1: Lemon drops into juicer (1s)
+            setTimeout(() => {
+                lemonWhole.style.top = '120px';
+                animationText.textContent = 'Dropping in the lemon...';
+            }, 500);
+            
+            // Step 2: Start juicing (2s)
+            setTimeout(() => {
+                juiceDrops.style.opacity = '1';
+                animationText.textContent = 'Squeezing out your leads...';
+            }, 1500);
+            
+            // Step 3: Lemon becomes empty (3s)
+            setTimeout(() => {
+                lemonWhole.style.opacity = '0';
+                lemonEmpty.style.opacity = '1';
+                animationText.textContent = 'Fresh leads extracted!';
+            }, 3500);
+            
+            // Step 4: Hide animation and scroll to contact (4s)
+            setTimeout(() => {
+                animation.style.display = 'none';
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Reset animation for next time
+                setTimeout(() => {
+                    lemonWhole.style.top = '50px';
+                    lemonWhole.style.opacity = '1';
+                    lemonEmpty.style.opacity = '0';
+                    juiceDrops.style.opacity = '0';
+                    animationText.textContent = 'Squeezing out your leads...';
+                }, 1000);
+            }, 4500);
+        }
+
+        // Add click event to Get Started button
+        document.getElementById('getStartedBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            playLemonJuicerAnimation();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        animateElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.id === 'getStartedBtn') return; // Skip for the animated button
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will contact you within 24 hours to discuss your lead generation needs.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
