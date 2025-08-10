@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Lemzz Leads | SMB Lead Generation Worcester</title>
+    
+    <!-- SEO Meta Tags for Worcester -->
+    <meta name="description" content="Lemzz Leads - Professional B2B lead generation services for SMBs in Worcester, Birmingham, Gloucester, Cheltenham, and the West Midlands. Get quality leads without cold calling.">
+    <meta name="keywords" content="lead generation Worcester, B2B leads West Midlands, SMB marketing Worcester, sales leads Birmingham, business leads Gloucestershire">
+    <meta name="geo.region" content="GB-WOR">
+    <meta name="geo.placename" content="Worcester">
+    <meta name="geo.position" content="52.1936;-2.2216">
+    <meta name="ICBM" content="52.1936, -2.2216">
+    
+    <!-- Open Graph for social -->
+    <meta property="og:title" content="Lemzz Leads - SMB Lead Generation Worcester">
+    <meta property="og:description" content="Stop cold calling. Start converting. Professional lead generation for Worcester businesses.">
+    <meta property="og:url" content="https://lemzleads.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Lemzz Leads",
+      "description": "Professional B2B lead generation services for SMBs in Worcester and surrounding areas",
+      "url": "https://lemzleads.com",
+      "areaServed": [
+        {"@type": "City", "name": "Worcester"},
+        {"@type": "City", "name": "Birmingham"},
+        {"@type": "City", "name": "Gloucester"},
+        {"@type": "City", "name": "Cheltenham"},
+        {"@type": "City", "name": "Hereford"}
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.1936,
+        "longitude": -2.2216
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Worcestershire",
+        "addressCountry": "GB"
+      }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FFD4E5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p style="font-size: 20px; margin-bottom: 20px;">✓ Waitlist confirmed</p>
+        
+        <div style="margin: 30px 0;">
+            <p style="font-size: 14px; opacity: 0.6;">Position</p>
+            <p id="counter" style="font-size: 48px; font-weight: 200;">68</p>
+        </div>
+        
+        <p style="font-size: 18px; opacity: 0.8; margin: 40px 0;">Jump the queue - 3 questions:</p>
+        
+        <form action="https://formspree.io/f/mqalweee" method="POST">
+            <input type="hidden" name="_next" value="https://lemzleads.com">
+            
+            <input type="text" name="challenge" required 
+                   style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 30px;"
+                   placeholder="Your #1 lead challenge">
+            
+            <select name="budget" required 
+                    style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 30px;">
+                <option value="">Monthly budget</option>
+                <option value="Under £1k">Under £1k</option>
+                <option value="£1-2k">£1-2k</option>
+                <option value="£2-5k">£2-5k</option>
+                <option value="£5k+">£5k+</option>
+            </select>
+            
+            <input type="text" name="result" required 
+                   style="width: 100%; padding: 15px 0; font-size: 16px; border: none; border-bottom: 1px solid #000; background: transparent; outline: none; margin-bottom: 40px;"
+                   placeholder="Result you want">
+            
+            <button type="submit" 
+                    style="background: none; border: 1px solid #000; color: #000; padding: 12px 30px; font-size: 16px; cursor: pointer;">
+                Submit
+            </button>
+        </form>
+        
+        <a href="https://lemzleads.com" style="color: #000; text-decoration: none; display: block; margin-top: 40px; font-size: 14px; opacity: 0.5;">← back</a>
+    </div>
+
+    <script>
+        // Counter starts at 67, shows 68+ for new signups
+        document.addEventListener('DOMContentLoaded', function() {
+            let count = 68 + Math.floor(Math.random() * 3);
+            document.getElementById('counter').textContent = count;
+        });
+    </script>
+</body>
+</html>
