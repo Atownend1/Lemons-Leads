@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualification & Payment | Lemons Leads</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #F8BBD9, #F4C2C2, #F0C9C9);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F4C2C2;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .qualification-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .offers {
+            margin-top: 2rem;
+        }
+
+        .offer-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .offer-title {
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .offer-description {
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-top: 2rem;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="logo">
+                <div class="logo-icon">L</div>
+                <span class="logo-text">Lemons Leads</span>
+            </div>
+            
+            <h1>🍋 You're on the Waitlist!</h1>
+            <p class="subtitle">Let's qualify you for the best package and get you started!</p>
+            
+            <div class="qualification-form">
+                <form action="https://formspree.io/f/mqalweee" method="POST" id="qualificationForm">
+                    <input type="hidden" name="_next" value="https://www.lemzleads.com/thank-you-success.html">
+                    <input type="hidden" name="_subject" value="New Lead Qualification - Lemzz Leads">
+                    
+                    <div class="form-group">
+                        <label for="challenges">What are your current challenges? *</label>
+                        <textarea id="challenges" name="challenges" rows="3" placeholder="Tell us about your lead generation challenges..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="currentLeads">How many leads do you get a month right now? *</label>
+                        <input type="number" id="currentLeads" name="currentLeads" min="0" placeholder="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">What is your budget? *</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select budget range...</option>
+                            <option value="500">£500/month</option>
+                            <option value="1000-2000">£1-2k/month</option>
+                            <option value="2500+">£2.5k+/month</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expectedLeads">How many leads do you expect a month? *</label>
+                        <input type="number" id="expectedLeads" name="expectedLeads" min="0" placeholder="0" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <div class="error-message" id="errorMsg" style="display: none; color: #d32f2f; font-size: 14px; margin-top: 10px;"></div>
+                </form>
+            </div>
+            
+            <div class="offers">
+                <h3 style="color: #FFD700; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">What You'll Get:</h3>
+                
+                <div class="offer-item">
+                    <div class="offer-title">🎯 Custom Lead Package</div>
+                    <div class="offer-description">Tailored to your business type and revenue goals</div>
+                </div>
+                
+                <div class="offer-item">
+                    <div class="offer-title">💰 Special Launch Pricing</div>
+                    <div class="offer-description">50% off your first 3 months + free setup</div>
+                </div>
+                
+                <div class="offer-item">
+                    <div class="offer-title">📧 Free Lead Nurture Templates</div>
+                    <div class="offer-description">Email sequences that convert prospects to customers</div>
+                </div>
+                
+                <div class="offer-item">
+                    <div class="offer-title">🚀 Priority Launch Access</div>
+                    <div class="offer-description">Be among the first 50 Worcester businesses to join</div>
+                </div>
+            </div>
+            
+            <p style="color: rgba(255, 255, 255, 0.8); margin-top: 2rem; font-size: 0.9rem;">
+                Expect an email within 24 hours with your custom quote and next steps.
+            </p>
+            
+            <a href="index.html" class="back-link">← Back to Homepage</a>
+        </div>
+    </div>
+
+    <script>
+        // Form is now handled by Formspree
+        // No JavaScript needed for form submission
+    </script>
+</body>
+</html>
+
+
