@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the waitlist! - Lemzz Leads</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FFD4E5;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            background: #FFD700;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 400;
+            text-decoration: none;
+            color: #000;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 120px 20px 40px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        /* Success View - Initial screen */
+        .success-view {
+            display: none;
+        }
+        
+        .success-view.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Animated Lemon */
+        .lemon-success-container {
+            margin-bottom: 30px;
+        }
+        
+        .lemon-success {
+            width: 80px;
+            height: 45px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .success-title {
+            font-size: 72px;
+            font-weight: 200;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+        
+        .emoji {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        
+        .success-subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 80px;
+            opacity: 0.9;
+        }
+        
+        /* Waitlist Glass Box */
+        .waitlist-box {
+            display: inline-block;
+            margin-bottom: 80px;
+        }
+        
+        .waitlist-glass-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px 50px;
+            display: inline-block;
+        }
+        
+        .waitlist-number {
+            font-size: 80px;
+            font-weight: 200;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .waitlist-text {
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .contact-text {
+            font-size: 28px;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+        
+        .yellow-button {
+            display: inline-block;
+            background: #FFD700;
+            color: #000;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 28px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .yellow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Qualification View */
+        .qualification-view {
+            display: none;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .qualification-view.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .qualification-form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 300ms ease;
+        }
+        
+        .qualification-form.sliding-up {
+            transform: translateY(-30px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .form-title {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        textarea,
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        /* Thank You Panel */
+        .thank-you-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 300ms ease;
+            display: none;
+        }
+        
+        .thank-you-panel.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .thank-you-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .offers-intro {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .offer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .offer-text {
+            flex: 1;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .buy-button {
+            padding: 8px 20px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+        }
+        
+        .email-note {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+        
+        /* Too Many Leads Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .popup-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .popup-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-message {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: #000;
+            opacity: 0.9;
+        }
+        
+        .popup-button {
+            padding: 15px 40px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .popup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 20px;
+                padding: 8px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .success-title {
+                font-size: 48px;
+            }
+            
+            .success-subtitle {
+                font-size: 24px;
+            }
+            
+            .waitlist-glass-container {
+                padding: 20px 30px;
+            }
+            
+            .waitlist-number {
+                font-size: 60px;
+            }
+            
+            .contact-text {
+                font-size: 22px;
+            }
+            
+            .yellow-button {
+                font-size: 22px;
+                padding: 16px 40px;
+            }
+            
+            .offer-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .buy-button {
+                width: 100%;
+            }
+            
+            .popup-message {
+                font-size: 22px;
+            }
+            
+            .popup-button {
+                font-size: 16px;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Too Many Leads Popup -->
+    <div id="tooManyLeadsPopup" class="popup-overlay">
+        <div class="popup-content">
+            <p class="popup-message">That's too much lemonade for you.<br>We only bring leads that can close.</p>
+            <button class="popup-button" onclick="closePopup()">Got it</button>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">LemzLeads</a>
+        <nav class="nav-links">
+            <a href="/#about">About</a>
+            <a href="/#process">Process</a>
+        </nav>
+    </header>
+    
+    <div class="main-content">
+        <div class="container">
+            <!-- Initial Success View -->
+            <div id="successView" class="success-view active">
+                <div class="lemon-success-container">
+                    <img src="lemon.png" alt="Success" class="lemon-success">
+                </div>
+                
+                <h1 class="success-title">You're In! <span class="emoji">🎉</span></h1>
+                <p class="success-subtitle">After building two 7-figure companies, I'm now offering leads and business development support across the Midlands — using the same GTM strategies that built my own.</p>
+                
+                <div class="waitlist-box">
+                    <div class="waitlist-glass-container">
+                        <div class="waitlist-number">#<span id="waitlistNumber">15</span></div>
+                        <div class="waitlist-text">Your position on the waitlist</div>
+                    </div>
+                </div>
+                
+                <p class="contact-text">We'll contact you within 48 hours to discuss your business needs</p>
+                
+                <button class="yellow-button" onclick="showQualification()">
+                    View Our Pricing Plans ↓
+                </button>
+            </div>
+            
+            <!-- Qualification Form (hidden initially) -->
+            <div id="qualificationView" class="qualification-view">
+                <div id="qualificationForm" class="qualification-form">
+                    <h2 class="form-title">Help us understand your needs</h2>
+                    
+                    <form id="qualifyForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="challenges">What are your current challenges?*</label>
+                            <textarea id="challenges" name="challenges" required placeholder="Tell us about your lead generation challenges..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currentLeads">How many leads do you get a month right now?*</label>
+                            <input type="number" id="currentLeads" name="currentLeads" min="0" required placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">What is your budget?*</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select budget range...</option>
+                                <option value="500">£500/month</option>
+                                <option value="1000-2000">£1-2k/month</option>
+                                <option value="2500+">£2.5k+/month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectedLeads">How many leads do you expect a month?*</label>
+                            <input type="number" id="expectedLeads" name="expectedLeads" min="0" required placeholder="0">
+                        </div>
+                        
+                        <!-- Hidden fields -->
+                        <input type="hidden" id="email" name="email">
+                        <input type="hidden" id="name" name="name">
+                        <input type="hidden" id="utm_source" name="utm_source">
+                        <input type="hidden" id="utm_campaign" name="utm_campaign">
+                        <input type="hidden" id="page_url" name="page_url">
+                        <input type="hidden" id="timestamp" name="timestamp">
+                        
+                        <button type="submit" class="submit-button" id="submitBtn">Submit</button>
+                        <div class="error-message" id="errorMsg"></div>
+                    </form>
+                </div>
+                
+                <!-- Thank You Panel (hidden initially) -->
+                <div id="thankYouPanel" class="thank-you-panel">
+                    <div class="thank-you-title">Thanks — we'll be in touch within 24 hours.</div>
+                    <div class="offers-intro">Not sure yet? Try us first:</div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">7-day trial of our lead system for £47</span>
+                        <button class="buy-button" id="buy-trial-47" onclick="checkout('trial-47', 47)">Buy Now</button>
+                    </div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">Starter pack of 10-15 leads for £97</span>
+                        <button class="buy-button" id="buy-starter-97" onclick="checkout('starter-97', 97)">Buy Now</button>
+                    </div>
+                    
+                    <div class="offer-item">
+                        <span class="offer-text">One-off 'Quick Win' campaign for £147</span>
+                        <button class="buy-button" id="buy-quickwin-147" onclick="checkout('quickwin-147', 147)">Buy Now</button>
+                    </div>
+                    
+                    <div class="email-note">We'll also email your receipt and access details.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get URL params
+        function getParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name) || '';
+        }
+        
+        // Too Many Leads Validation
+        function showLeadsPopup() {
+            document.getElementById('tooManyLeadsPopup').classList.add('show');
+        }
+        
+        function closePopup() {
+            document.getElementById('tooManyLeadsPopup').classList.remove('show');
+            // Reset to maximum allowed (50)
+            document.getElementById('expectedLeads').value = 50;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set random waitlist number
+            document.getElementById('waitlistNumber').textContent = 
+                Math.floor(Math.random() * 8) + 12;
+            
+            // Populate hidden fields from Contact Us form
+            document.getElementById('email').value = getParam('email');
+            document.getElementById('name').value = getParam('name');
+            document.getElementById('utm_source').value = getParam('utm_source');
+            document.getElementById('utm_campaign').value = getParam('utm_campaign');
+            document.getElementById('page_url').value = window.location.href;
+            document.getElementById('timestamp').value = new Date().toISOString();
+            
+            // Add validation to expectedLeads field
+            document.getElementById('expectedLeads').addEventListener('change', function() {
+                if (parseInt(this.value) > 50) {
+                    showLeadsPopup();
+                }
+            });
+        });
+        
+        // Show qualification form
+        function showQualification() {
+            document.getElementById('successView').style.display = 'none';
+            document.getElementById('qualificationView').classList.add('active');
+        }
+        
+        // Handle form submission
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+            
+            const formData = {
+                challenges: document.getElementById('challenges').value,
+                currentLeads: parseInt(document.getElementById('currentLeads').value),
+                budget: document.getElementById('budget').value,
+                expectedLeads: parseInt(document.getElementById('expectedLeads').value),
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                utm_source: document.getElementById('utm_source').value,
+                utm_campaign: document.getElementById('utm_campaign').value,
+                page_url: document.getElementById('page_url').value,
+                timestamp: document.getElementById('timestamp').value
+            };
+            
+            // Store for checkout
+            sessionStorage.setItem('qualificationData', JSON.stringify(formData));
+            
+            try {
+                const response = await fetch('/api/qualify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    // Success - slide up form, show thank you
+                    document.getElementById('qualificationForm').classList.add('sliding-up');
+                    setTimeout(() => {
+                        document.getElementById('thankYouPanel').classList.add('show');
+                    }, 300);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Error - show message and re-enable
+                btn.disabled = false;
+                btn.textContent = originalText;
+                document.getElementById('errorMsg').textContent = "We couldn't save your answers. Please try again.";
+                document.getElementById('errorMsg').classList.add('show');
+            }
+        }
+        
+        // Handle checkout
+        function checkout(product, price) {
+            const data = JSON.parse(sessionStorage.getItem('qualificationData') || '{}');
+            const params = new URLSearchParams({
+                email: data.email,
+                name: data.name,
+                product: product,
+                price: price,
+                challenges: data.challenges,
+                currentLeads: data.currentLeads,
+                budget: data.budget,
+                expectedLeads: data.expectedLeads
+            });
+            window.location.href = `/checkout/${product}?${params.toString()}`;
+        }
+    </script>
+</body>
+</html>
