@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lemons Leads</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .auth-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .auth-section input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .auth-section button {
+            background: #000;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .dashboard {
+            display: none;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .actions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .actions button {
+            background: #000;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .actions button:hover {
+            background: #333;
+        }
+        
+        .data-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: #000;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .plan-badge {
+            background: #000;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .success {
+            color: #155724;
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🍋 Lemons Leads Admin Dashboard</h1>
+    </div>
+    
+    <div class="container">
+        <!-- Authentication Section -->
+        <div class="auth-section" id="authSection">
+            <h2 style="margin-bottom: 20px;">Admin Access Required</h2>
+            <input type="password" id="adminKey" placeholder="Enter Admin Key" />
+            <button onclick="authenticate()">Access Dashboard</button>
+            <div id="authMessage"></div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard" id="dashboard">
+            <!-- Stats Grid -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCount">-</div>
+                    <div class="stat-label">Total Submissions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="recentCount">-</div>
+                    <div class="stat-label">Last 7 Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="planCount">-</div>
+                    <div class="stat-label">With Plan Selected</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="companyCount">-</div>
+                    <div class="stat-label">Unique Companies</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="actions">
+                <button onclick="refreshData()">🔄 Refresh Data</button>
+                <button onclick="exportCSV()">📊 Export CSV</button>
+                <button onclick="showStats()">📈 View Stats</button>
+                <button onclick="logout()">🚪 Logout</button>
+            </div>
+            
+            <!-- Data Table -->
+            <div class="data-table">
+                <div class="table-header">
+                    <h3>All Waitlist Submissions</h3>
+                </div>
+                <div id="tableContainer">
+                    <div class="loading">Loading data...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let adminKey = '';
+        
+        function authenticate() {
+            const key = document.getElementById('adminKey').value;
+            if (!key) {
+                showMessage('Please enter admin key', 'error');
+                return;
+            }
+            
+            adminKey = key;
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            
+            // Load dashboard data
+            loadStats();
+            loadWaitlistData();
+        }
+        
+        function logout() {
+            adminKey = '';
+            document.getElementById('authSection').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('adminKey').value = '';
+        }
+        
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/admin/stats', {
+                    headers: { 'x-admin-key': adminKey }
+                });
+                
+                if (response.ok) {
+                    const stats = await response.json();
+                    
+                    document.getElementById('totalCount').textContent = stats.total;
+                    document.getElementById('recentCount').textContent = stats.recent7Days;
+                    document.getElementById('planCount').textContent = stats.byPlan.reduce((sum, p) => sum + p.count, 0);
+                    document.getElementById('companyCount').textContent = stats.topCompanies.length;
+                } else {
+                    showMessage('Failed to load stats', 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading stats: ' + error.message, 'error');
+            }
+        }
+        
+        async function loadWaitlistData() {
+            try {
+                const response = await fetch('/api/admin/waitlist', {
+                    headers: { 'x-admin-key': adminKey }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayWaitlistTable(data);
+                } else {
+                    showMessage('Failed to load waitlist data', 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading data: ' + error.message, 'error');
+            }
+        }
+        
+        function displayWaitlistTable(data) {
+            if (data.length === 0) {
+                document.getElementById('tableContainer').innerHTML = '<div class="loading">No submissions yet</div>';
+                return;
+            }
+            
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Company</th>
+                            <th>Plan</th>
+                            <th>Challenge</th>
+                            <th>Created</th>
+                            <th>IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(row => `
+                            <tr>
+                                <td>${row.id}</td>
+                                <td><strong>${escapeHtml(row.name)}</strong></td>
+                                <td>${escapeHtml(row.email)}</td>
+                                <td>${row.phone || '-'}</td>
+                                <td>${escapeHtml(row.company)}</td>
+                                <td>${row.plan ? `<span class="plan-badge">${escapeHtml(row.plan)}</span>` : '-'}</td>
+                                <td>${escapeHtml(row.biggest_challenge)}</td>
+                                <td>${formatDate(row.created_at)}</td>
+                                <td>${row.ip_address || '-'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('tableContainer').innerHTML = table;
+        }
+        
+        async function exportCSV() {
+            try {
+                const response = await fetch('/api/admin/export', {
+                    headers: { 'x-admin-key': adminKey }
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `waitlist-${new Date().toISOString().split('T')[0]}.csv`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    showMessage('Failed to export CSV', 'error');
+                }
+            } catch (error) {
+                showMessage('Error exporting: ' + error.message, 'error');
+            }
+        }
+        
+        function refreshData() {
+            loadStats();
+            loadWaitlistData();
+            showMessage('Data refreshed', 'success');
+        }
+        
+        function showStats() {
+            // This could open a modal with detailed stats
+            alert('Stats feature coming soon!');
+        }
+        
+        function showMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type;
+            messageDiv.textContent = message;
+            
+            const container = document.querySelector('.container');
+            container.insertBefore(messageDiv, container.firstChild);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // Check if already authenticated (for page refresh)
+        if (adminKey) {
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadStats();
+            loadWaitlistData();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple JavaScript Test</title>
+</head>
+<body>
+    <h1>Simple JavaScript Test</h1>
+    
+    <button onclick="alert('Button clicked!')">Test Alert</button>
+    <button onclick="testFunction()">Test Function</button>
+    
+    <div id="output">Click buttons to test...</div>
+    
+    <script>
+        console.log('Page loaded');
+        
+        function testFunction() {
+            document.getElementById('output').innerHTML = 'Function worked at ' + new Date().toLocaleTimeString();
+            console.log('Function executed');
+        }
+        
+        // Test if we can access the DOM
+        window.onload = function() {
+            console.log('Window loaded');
+            console.log('Output element found:', document.getElementById('output'));
+        }
+    </script>
+</body>
+</html>

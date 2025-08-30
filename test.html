@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test - Lemons Leads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .page {
+            display: none;
+            padding: 20px;
+            background: #e8f4fd;
+            border: 2px solid #007acc;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .page.active {
+            display: block;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        .debug {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Navigation Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Basic Function Call</h2>
+        <button onclick="testBasicFunction()">Test Basic Function</button>
+        <button onclick="alert('Direct alert works!')">Test Direct Alert</button>
+        <div class="debug" id="test1Result">Click a button to test...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: showPage Function</h2>
+        <button onclick="showPage('home')">Show Home</button>
+        <button onclick="showPage('about')">Show About</button>
+        <button onclick="showPage('contact')">Show Contact</button>
+        <div class="debug" id="test2Result">Click a button to test...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Page Visibility</h2>
+        <div id="home" class="page active">
+            <h3>🏠 Home Page</h3>
+            <p>This is the home page content.</p>
+        </div>
+        <div id="about" class="page">
+            <h3>ℹ️ About Page</h3>
+            <p>This is the about page content.</p>
+        </div>
+        <div id="contact" class="page">
+            <h3>📞 Contact Page</h3>
+            <p>This is the contact page content.</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Debug Console</h2>
+        <div class="debug" id="debugConsole">Console output will appear here...</div>
+        <button onclick="clearConsole()">Clear Console</button>
+    </div>
+
+    <script>
+        // Override console.log to show in our debug area
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        function logToDebug(message) {
+            const consoleDiv = document.getElementById('debugConsole');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleDiv.innerHTML += `[${timestamp}] ${message}<br>`;
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logToDebug('LOG: ' + args.join(' '));
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            logToDebug('ERROR: ' + args.join(' '));
+        };
+        
+        // Test basic function
+        function testBasicFunction() {
+            const result = document.getElementById('test1Result');
+            result.innerHTML = '✅ Basic function call works! Function executed at: ' + new Date().toLocaleTimeString();
+            console.log('Basic function test passed');
+        }
+        
+        // Global navigation function (same as your main page)
+        window.showPage = function(pageId) {
+            console.log('showPage called with:', pageId);
+            
+            // Update test result
+            const result = document.getElementById('test2Result');
+            result.innerHTML = `✅ showPage called with: ${pageId} at ${new Date().toLocaleTimeString()}`;
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+                console.log('Removed active from:', page.id);
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                console.log('Added active to:', pageId);
+                result.innerHTML += `<br>✅ Page ${pageId} is now visible`;
+            } else {
+                console.error('Page not found:', pageId);
+                result.innerHTML += `<br>❌ Page ${pageId} not found`;
+            }
+        }
+        
+        function clearConsole() {
+            document.getElementById('debugConsole').innerHTML = '';
+        }
+        
+        // Log when page loads
+        console.log('Test page loaded successfully!');
+        console.log('showPage function available:', typeof showPage);
+        
+        // Test if we can find the pages
+        console.log('Pages found:', document.querySelectorAll('.page').length);
+        document.querySelectorAll('.page').forEach(page => {
+            console.log('Page ID:', page.id, 'Classes:', page.className);
+        });
+    </script>
+</body>
+</html>

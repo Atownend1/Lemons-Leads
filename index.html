@@ -13,6 +13,59 @@
     })(window, document, "clarity", "script", "ssrw5cxov3");
     </script>
     
+    <!-- Debug Script -->
+    <script>
+        console.log('Lemons Leads page loaded successfully!');
+        
+        // Global navigation function
+        window.showPage = function(pageId) {
+            console.log('showPage called with:', pageId);
+            alert('showPage called with: ' + pageId); // Temporary debug
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+                console.log('Removed active from:', page.id);
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                console.log('Added active to:', pageId);
+            } else {
+                console.error('Page not found:', pageId);
+            }
+            
+            // Update page title
+            updatePageTitle(pageId);
+        }
+        
+        function updatePageTitle(pageId) {
+            switch(pageId) {
+                case 'home':
+                    document.title = 'Business Development Midlands | B2B Lead Generation Worcester | Lemzz Leads';
+                    break;
+                case 'about':
+                    document.title = 'About Us | Business Development Midlands | Lemzz Leads Worcester';
+                    break;
+                case 'juice':
+                    document.title = 'Our Process | Business Development Services Midlands | Lemzz Leads';
+                    break;
+                case 'pricing':
+                    document.title = 'Pricing | Business Development Packages Midlands | Lemzz Leads';
+                    break;
+                case 'contact':
+                    document.title = 'Contact | Business Development Midlands | Get B2B Leads Worcester';
+                    break;
+                default:
+                    document.title = 'Business Development Midlands | B2B Lead Generation Worcester | Lemzz Leads';
+            }
+        }
+        
+        console.log('Navigation test: showPage function available:', typeof showPage);
+    </script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5JQ3MG3P"></script>
     <script>
@@ -59,49 +112,9 @@
             }
         });
         
-        // Track page navigation (for single-page app)
-        window.showPage = function(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            
-            // Track page view in Google Analytics
-            gtag('event', 'page_view', {
-                'page_title': pageId,
-                'page_location': window.location.href + '#' + pageId
-            });
-            
-            // Update meta tags for SEO
-            updateMetaTags(pageId);
-        }
+        // Track page navigation (for single-page app) - Now handled by global function
         
-        function updateMetaTags(pageId) {
-            const metaTitle = document.querySelector('meta[property="og:title"]');
-            const metaDesc = document.querySelector('meta[name="description"]');
-            
-            switch(pageId) {
-                case 'about':
-                    document.title = 'About ss | Business Development Midlands | Lemzz Leads Worcester';
-                    metaDesc.content = 'Leading business development agency in the Midlands. We help SMBs in Worcester, Birmingham, and across the West Midlands generate quality B2B leads without cold calling.';
-                    break;
-                case 'juice':
-                    document.title = 'Our Process | Business Development Services Midlands | Lemzz Leads';
-                    metaDesc.content = 'Discover our proven 4-step business development process. From identifying decision makers to delivering qualified leads for Midlands businesses.';
-                    break;
-                case 'pricing':
-                    document.title = 'Pricing | Business Development Packages Midlands | Lemzz Leads';
-                    metaDesc.content = 'Affordable business development pricing for Midlands SMBs. Choose from Starter, Growth, or Enterprise packages. Get qualified B2B leads starting from £497/month.';
-                    break;
-                case 'contact':
-                    document.title = 'Contact | Business Development Midlands | Get B2B Leads Worcester';
-                    metaDesc.content = 'Ready to transform your business development? Contact Lemzz Leads for professional B2B lead generation across the Midlands. Worcester, Birmingham, Gloucester.';
-                    break;
-                default:
-                    document.title = 'Business Development Midlands | B2B Lead Generation Worcester | Lemzz Leads';
-                    metaDesc.content = 'Top-rated business development services in the Midlands. Professional B2B lead generation for SMBs in Worcester, Birmingham, and West Midlands. Stop cold calling, start converting.';
-            }
-        }
+        // Meta tags update - Now handled by global function
     });
     </script>
     
@@ -257,10 +270,17 @@
             z-index: 10;
             cursor: pointer;
             transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #000;
+            font-weight: 600;
         }
 
         .corner-nav:hover {
             transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         /* Top Left - Logo */
@@ -313,10 +333,17 @@
             z-index: 10;
             cursor: pointer;
             transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #000;
+            font-weight: 600;
         }
         
         .center-nav:hover {
             transform: translateX(-50%) scale(1.1);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         /* Page Content */
@@ -756,6 +783,7 @@
         <div class="corner-nav top-right" onclick="showPage('about')" aria-label="About us">About us</div>
         <div class="corner-nav bottom-left" onclick="showPage('juice')" aria-label="Our Process">The Juice</div>
         <div class="corner-nav bottom-right" onclick="showPage('contact')" aria-label="Contact us">Contact us</div>
+        <div class="center-nav" onclick="showPage('pricing')" aria-label="Pricing">Pricing</div>
     </nav>
 
     <!-- Home Page -->
@@ -765,6 +793,20 @@
         </div>
         <h1 class="coming-soon">Business Development Midlands</h1>
         <p class="home-subtitle">Transform your SMB with the Midlands' top-rated B2B lead generation service. No cold calling. Just results.</p>
+        
+        <!-- Home Page CTA -->
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="showPage('contact')" style="display: inline-block; background: #000; color: white; padding: 18px 36px; border: none; border-radius: 4px; transition: all 0.2s ease; font-size: 18px; font-weight: 600; cursor: pointer;">Get Started - Free Consultation</button>
+            <p style="margin-top: 15px; color: #666; font-size: 16px;">No commitment required • 15-minute call • Immediate action plan</p>
+        </div>
+        
+        <!-- Test Navigation Buttons -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="showPage('about')" style="margin: 5px; padding: 10px 20px; background: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">Test About</button>
+            <button onclick="showPage('pricing')" style="margin: 5px; padding: 10px 20px; background: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Pricing</button>
+            <button onclick="showPage('juice')" style="margin: 5px; padding: 10px 20px; background: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Process</button>
+            <button onclick="showPage('contact')" style="margin: 5px; padding: 10px 20px; background: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Contact</button>
+        </div>
         
         <!-- Hidden SEO Content for Homepage -->
         <div class="seo-content">
@@ -800,6 +842,12 @@
         <div class="page-text">
             <h1>The Next Generation of Business Development for Midlands SMBs</h1>
             <p>Because cold calling is dead, and busy weeks shouldn't turn your leads sour.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="showPage('contact')" style="display: inline-block; background: #000; color: white; padding: 16px 32px; border: none; border-radius: 4px; transition: all 0.2s ease; font-weight: 600; cursor: pointer;">Get Free Consultation</button>
+            </div>
+            <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f8f9fa; border: 2px solid #000; border-radius: 8px; display: inline-block; margin-left: 50%; transform: translateX(-50%);">
+                <strong>🎯 First 5 Leads FREE - No Results, No Fee</strong>
+            </div>
         </div>
         <div class="form-container">
             <form action="https://formspree.io/f/mqalweee" method="POST">
@@ -835,28 +883,140 @@
             <img src="lemon.png" alt="Contact Business Development Midlands" class="lemon-image">
         </div>
         <div class="page-text">
-            <h1>Join Leading Midlands Businesses Growing with Lemzz Leads</h1>
-            <p>See how we're transforming business development for SMBs across Worcester, Birmingham, and beyond.</p>
+            <h1>Ready to Get More Leads?</h1>
+            <p>Tell us about your business. We'll show you exactly how we can help.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="showPage('contact')" style="display: inline-block; background: #000; color: white; padding: 16px 32px; border: none; border-radius: 4px; transition: all 0.2s ease; font-weight: 600; cursor: pointer;">Book Free Consultation</button>
+            </div>
         </div>
         
-        <!-- SEO Content for Contact -->
-        <div class="seo-content" style="display: block;">
-            <h2>Get Started with Business Development in the Midlands</h2>
-            <p>Ready to accelerate your business growth? Join dozens of successful Midlands companies who've transformed their sales pipeline with Lemzz Leads' business development services.</p>
-            
-            <h2>Coverage Areas for Business Development</h2>
-            <p>We provide business development services throughout the Midlands, including:</p>
-            <ul>
-                <li>Worcester and Worcestershire</li>
-                <li>Birmingham and West Midlands</li>
-                <li>Gloucester and Gloucestershire</li>
-                <li>Coventry and Warwickshire</li>
-                <li>Stoke-on-Trent and Staffordshire</li>
-                <li>All areas within 50 miles of Worcester</li>
-            </ul>
-            
-            <p>Contact us today to discuss how our business development services can help your Midlands business achieve sustainable growth.</p>
+        <!-- Working Contact Form -->
+        <div class="form-container" style="max-width: 500px; margin: 40px auto;">
+            <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" name="name" placeholder="Your Name" required style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white;">
+                
+                <input type="email" name="email" placeholder="Email Address" required style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white;">
+                
+                <input type="tel" name="phone" placeholder="Phone Number" required style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white;">
+                
+                <input type="text" name="company" placeholder="Company Name" required style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white;">
+                
+                <select name="plan" required style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white;">
+                    <option value="">How many leads do you need?</option>
+                    <option value="starter">25 leads/month (£497)</option>
+                    <option value="growth">60 leads/month (£997)</option>
+                    <option value="enterprise">150+ leads/month (£2,497)</option>
+                </select>
+                
+                <textarea name="biggest_challenge" placeholder="What's your biggest sales challenge?" rows="3" style="padding: 15px; font-size: 16px; border: 2px solid #000; background: white; resize: vertical;"></textarea>
+                
+                <button type="submit" style="padding: 18px; font-size: 18px; background: #000; color: white; border: none; cursor: pointer; font-weight: 600; transition: all 0.2s ease;">Get Started - Free Consultation</button>
+                
+                <div id="formMessage" style="display: none; padding: 15px; text-align: center; font-weight: 600;"></div>
+            </form>
         </div>
+        
+        <!-- Black Diamond Social Proof -->
+        <div style="text-align: center; margin-top: 60px; padding: 40px; background: rgba(0,0,0,0.05); border-radius: 10px;">
+            <p style="font-size: 18px; margin-bottom: 20px;">Trusted by companies like:</p>
+            <h3 style="font-size: 24px; margin-bottom: 20px;">Black Diamond Advisory</h3>
+            <p style="font-style: italic; font-size: 18px; max-width: 600px; margin: 0 auto; margin-bottom: 30px;">
+                "45 qualified leads in our first month. LemzLeads transformed our pipeline."
+            </p>
+            
+            <!-- Stats Row -->
+            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 36px; font-weight: 700; color: #000;">45</div>
+                    <div style="font-size: 14px; color: #666;">Leads in Month 1</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 36px; font-weight: 700; color: #000;">12%</div>
+                    <div style="font-size: 14px; color: #666;">Conversion Rate</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 36px; font-weight: 700; color: #000;">5.4x</div>
+                    <div style="font-size: 20px; color: #666;">ROI</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #000; color: white; border-radius: 8px; display: inline-block;">
+                <strong>Exclusive - Only 20 Client Slots Available</strong>
+            </div>
+        </div>
+        
+        <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Log form data for debugging
+            console.log('Form data being sent:', data);
+            
+            // Disable button during submission
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            try {
+                // Try your backend first (relative URL)
+                const response = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = 'green';
+                    formMessage.textContent = 'Success! We\'ll contact you within 24 hours.';
+                    e.target.reset();
+                    
+                    // Track conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'generate_lead', {
+                            'event_category': 'engagement',
+                            'event_label': 'contact_form'
+                        });
+                    }
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    console.log('Backend error:', errorData);
+                    throw new Error(errorData.error || 'Backend error');
+                }
+            } catch (error) {
+                console.log('Backend failed, trying Formspree:', error.message);
+                // Fallback to Formspree if backend fails
+                try {
+                    const formspreeResponse = await fetch('https://formspree.io/f/mqalweee', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data)
+                    });
+                    
+                    if (formspreeResponse.ok) {
+                        formMessage.style.display = 'block';
+                        formMessage.style.color = 'green';
+                        formMessage.textContent = 'Success! We\'ll contact you within 24 hours.';
+                        e.target.reset();
+                    } else {
+                        throw new Error('Formspree submission failed');
+                    }
+                } catch (formspreeError) {
+                    console.log('Formspree also failed:', formspreeError);
+                    formMessage.style.display = 'block';
+                    formMessage.style.color = 'red';
+                    formMessage.textContent = 'Error submitting form. Please email alex@lemzleads.com directly.';
+                }
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Get Started';
+            }
+        });
+        </script>
     </section>
     
     <!-- Pricing Page -->
@@ -924,6 +1084,11 @@
             <strong>Limited Availability:</strong> We only work with 20 clients at a time to ensure quality. Join the waitlist to secure your spot.
         </p>
         
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="showPage('contact')" style="display: inline-block; background: #000; color: white; padding: 18px 36px; border: none; border-radius: 4px; transition: all 0.2s ease; font-size: 18px; font-weight: 600; cursor: pointer;">Book Your Free Consultation</button>
+            <p style="margin-top: 15px; color: white; font-size: 16px;">No commitment required • 15-minute call • Immediate action plan</p>
+        </div>
+        
         <!-- SEO Content for Pricing -->
         <div class="seo-content" style="display: block; margin-top: 60px;">
             <h2>Business Development Pricing for Midlands SMBs</h2>
@@ -970,6 +1135,11 @@
                 <span class="process-title">Your Success</span>
                 <span class="process-detail">Qualified Leads & Growth</span>
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="showPage('contact')" style="display: inline-block; background: #000; color: white; padding: 18px 36px; border: none; border-radius: 4px; transition: all 0.2s ease; font-size: 18px; font-weight: 600; cursor: pointer;">See This Process in Action</button>
+            <p style="margin-top: 15px; color: #666; font-size: 16px;">Free 15-minute consultation • No sales pitch • Just results</p>
         </div>
         
         <!-- SEO Content for Process -->
